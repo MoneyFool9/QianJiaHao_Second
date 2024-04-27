@@ -1,0 +1,186 @@
+body {
+    overflow: hidden;
+}
+.pubCon {
+    width: 100%;
+    height: auto;
+    margin: 0 32px;
+}
+.wrap {
+    width: 100%;
+    height: auto;
+    background-color: rgb(241, 241, 241);
+}
+/* 导航样式开始 */
+nav {
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+}
+.navCon {
+    width: 100%;
+    max-width: none !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+.nav-left {
+    /* width: 30%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.nav-left>a>img {
+    width: 80px;
+    height: 44px;
+}
+.nav-left ul{
+    display: flex;
+}
+.nav-left li {
+    height: 54px;
+    line-height: 54px;
+    box-sizing: border-box;
+}
+.nav-left>ul>li>a {
+    display: block;
+    height: 100%;
+    line-height: 54px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nav-left>ul>li>a:hover {
+    background-color: rgb(225, 225, 225);
+}
+.nav-login {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #cecccc;
+    line-height: 40px;
+}
+.nav-right {
+    /* width: 30%; */
+    display: flex;
+    gap: 15px;
+}
+.nav-right ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.nav-right a {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.nav-loginBtn {
+    margin-right: 64px;
+    width: 88px;
+    height: 38px;
+    border-radius: 20px;
+    line-height: 38px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #fc5531;
+}
+.nav-loginBtn a {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+}
+.nav-loginBtn i {
+    margin-right: 4px;
+}
+.nav-middle {
+    display: flex;
+    width: 40%;
+}
+#nav-search {
+    margin-left: 30px;
+    color: #777888;
+    width: calc(80% - 88px);
+    height: 30px;
+    font-size: 14px;
+    display: inline-block;
+    outline: 0;
+    box-sizing: border-box;
+    border-radius: 16px 0 0 16px;
+    border: 1px solid #e8e8ed;
+    border-right: none;
+    background: #f5f6f7;
+    vertical-align: top;
+    overflow: visible;
+}
+.nav-middle button {
+    width: 88px;
+    height: 30px;
+    outline: 0;
+    border: 0 none;
+    border-radius: 0 16px 16px 0;
+    font-size: 14px;
+    line-height: 30px;
+    cursor: pointer;
+    background-color: #fc5531;
+    font-weight: 600;
+    color: #fff;
+}
+/* 导航样式结束 */
+
+/* 主体内容头部开始 */
+.hdCon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-box ul {
+    margin: 10px 0;
+    width: 100%;
+    max-width: 1380px;
+    height: 128px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    background-color: #fff;
+    padding: 24px 24px 0;
+    box-sizing: border-box;
+}
+.header-box ul li {
+    margin-right: 45px;
+}
+.ntCon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notice-box {
+    padding-left: 80px;
+    width: 100%;
+    max-width: 1380px;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.notice-box div{
+    border: 1px solid red;
+}
+.noticeBox-left {
+    width: 420px;
+    height: 400px;
+}
+.noticeBox-middle {
+    width: 304px;
+    height: 400px;
+}
+.noticeBox-right {
+    width: 304px;
+    height: 400px;
+}
+/* 主体内容头部结束 */
