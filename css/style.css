@@ -1,186 +1,734 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
-    overflow: hidden;
+  text-align: center;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+input,
+button,
+img {
+  border: none;
+  vertical-align: middle;
+}
+.loginPage-module {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1999;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginPage-module .container {
+  margin: 100px auto;
+  width: 520px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 14px;
+  z-index: 2000;
+  overflow: hidden;
+}
+.loginPage-module .container form {
+  position: relative;
+  padding: 25px;
+}
+.loginPage-module .container form .closeForm {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  cursor: pointer;
+}
+.loginPage-module .container form .closeForm i {
+  font-size: 20px;
+}
+.loginPage-module .container form h2 {
+  margin-top: 10px;
+}
+.loginPage-module .container form h2 span {
+  color: #fc5531;
+}
+.loginPage-module .container form .title {
+  font-size: 25px;
+  margin-top: 105px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.loginPage-module .container form .input-box {
+  position: relative;
+  width: 100%;
+}
+.loginPage-module .container form .input-box i {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+.loginPage-module .container form .input-box .clearInput {
+  display: none;
+  position: absolute;
+  right: 40px;
+  top: 48%;
+}
+.loginPage-module .container form .input-box .clearInput.show {
+  display: block;
+}
+.loginPage-module .container form .input-box .clearUsername {
+  right: 10px;
+  top: 30%;
+}
+.loginPage-module .container form .input-box .hidePw {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
+.loginPage-module .container form .input-box .hidePw.show {
+  display: block;
+}
+.loginPage-module .container form .input-box .missPw {
+  float: right;
+  margin-top: 5px;
+}
+.loginPage-module .container form .input-box input {
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #777888;
+  background-color: #eee;
+}
+.loginPage-module .container form .input-box .persistedPw {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  line-height: 16px;
+  float: left;
+  margin-top: 7px;
+}
+.loginPage-module .container form .input-box p {
+  z-index: 1;
+  float: left;
+  margin-top: 4px;
+  margin-left: 5px;
+}
+.loginPage-module .container form .input-box .password-box {
+  margin-top: 20px;
+}
+.loginPage-module .container form .input-box .login-btn {
+  cursor: default;
+  color: #fff;
+  background-color: #ee9b86;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  text-align: center;
+  border-radius: 20px 20px;
+  border: 0 none;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+.loginPage-module .container form .input-box .login-btn.checked {
+  background-color: #fc5531;
+  cursor: pointer;
+}
+.loginPage-module .container form .input-box .login-btn.checked:hover {
+  background-color: #f63d15;
+}
+.loginPage-module .container form .loginBtn-box {
+  margin-top: 20px;
+  text-align: center;
+}
+.loginPage-module .container form .loginBtn-box .ToSignUP {
+  display: block;
+  color: #099fde;
+  font-size: 600;
+  margin-top: 10px;
+}
+body {
+  overflow: scroll !important;
 }
 .pubCon {
-    width: 100%;
-    height: auto;
-    margin: 0 32px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 .wrap {
-    width: 100%;
-    height: auto;
-    background-color: rgb(241, 241, 241);
+  width: 100%;
+  height: auto;
+  background-color: #f1f1f1;
 }
 /* 导航样式开始 */
 nav {
-    width: 100%;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 .navCon {
-    width: 100%;
-    max-width: none !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
+  margin: 0 32px;
+  width: 100%;
+  max-width: none !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 .nav-left {
-    /* width: 30%; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  /* width: 30%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.nav-left>a>img {
-    width: 80px;
-    height: 44px;
+.nav-left > a > img {
+  width: 80px;
+  height: 44px;
 }
-.nav-left ul{
-    display: flex;
+.nav-left ul {
+  display: flex;
 }
 .nav-left li {
-    height: 54px;
-    line-height: 54px;
-    box-sizing: border-box;
+  height: 54px;
+  line-height: 54px;
+  box-sizing: border-box;
 }
-.nav-left>ul>li>a {
-    display: block;
-    height: 100%;
-    line-height: 54px;
-    padding: 0 10px;
-    box-sizing: border-box;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.nav-left > ul > li > a {
+  display: block;
+  height: 100%;
+  line-height: 54px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.nav-left>ul>li>a:hover {
-    background-color: rgb(225, 225, 225);
+.nav-left > ul > li > a:hover {
+  background-color: #e1e1e1;
 }
 .nav-login {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #cecccc;
-    line-height: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #cecccc;
+  line-height: 40px;
 }
 .nav-right {
-    /* width: 30%; */
-    display: flex;
-    gap: 15px;
+  /* width: 30%; */
+  display: flex;
+  gap: 15px;
 }
 .nav-right ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .nav-right a {
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .nav-loginBtn {
-    margin-right: 64px;
-    width: 88px;
-    height: 38px;
-    border-radius: 20px;
-    line-height: 38px;
-    font-size: 17px;
-    font-weight: 600;
-    color: #fff;
-    background-color: #fc5531;
+  margin-right: 64px;
+  width: 88px;
+  height: 38px;
+  border-radius: 20px;
+  line-height: 38px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #fc5531;
 }
 .nav-loginBtn a {
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
 }
 .nav-loginBtn i {
-    margin-right: 4px;
+  margin-right: 4px;
 }
 .nav-middle {
-    display: flex;
-    width: 40%;
+  display: flex;
+  width: 40%;
 }
 #nav-search {
-    margin-left: 30px;
-    color: #777888;
-    width: calc(80% - 88px);
-    height: 30px;
-    font-size: 14px;
-    display: inline-block;
-    outline: 0;
-    box-sizing: border-box;
-    border-radius: 16px 0 0 16px;
-    border: 1px solid #e8e8ed;
-    border-right: none;
-    background: #f5f6f7;
-    vertical-align: top;
-    overflow: visible;
+  margin-left: 30px;
+  color: #777888;
+  width: calc(80% - 88px);
+  height: 30px;
+  font-size: 14px;
+  display: inline-block;
+  outline: 0;
+  box-sizing: border-box;
+  border-radius: 16px 0 0 16px;
+  border: 1px solid #e8e8ed;
+  border-right: none;
+  background: #f5f6f7;
+  vertical-align: top;
+  overflow: visible;
 }
 .nav-middle button {
-    width: 88px;
-    height: 30px;
-    outline: 0;
-    border: 0 none;
-    border-radius: 0 16px 16px 0;
-    font-size: 14px;
-    line-height: 30px;
-    cursor: pointer;
-    background-color: #fc5531;
-    font-weight: 600;
-    color: #fff;
+  width: 88px;
+  height: 30px;
+  outline: 0;
+  border: 0 none;
+  border-radius: 0 16px 16px 0;
+  font-size: 14px;
+  line-height: 30px;
+  cursor: pointer;
+  background-color: #fc5531;
+  font-weight: 600;
+  color: #fff;
 }
 /* 导航样式结束 */
-
 /* 主体内容头部开始 */
 .hdCon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .header-box ul {
-    margin: 10px 0;
-    width: 100%;
-    max-width: 1380px;
-    height: 128px;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    white-space: nowrap;
-    background-color: #fff;
-    padding: 24px 24px 0;
-    box-sizing: border-box;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 1380px;
+  height: 128px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  background-color: #fff;
+  padding: 24px 24px 0;
+  box-sizing: border-box;
 }
 .header-box ul li {
-    margin-right: 45px;
+  margin-right: 45px;
 }
 .ntCon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  /* max-width: 1380px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .notice-box {
-    padding-left: 80px;
-    width: 100%;
-    max-width: 1380px;
-    display: flex;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-.notice-box div{
-    border: 1px solid red;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  margin-top: 15px;
 }
 .noticeBox-left {
-    width: 420px;
-    height: 400px;
+  width: 420px;
+  height: 470px;
+}
+.noticeBox-left .topArticle {
+  display: flex;
+}
+.noticeBox-left .topArticle img {
+  width: 30px;
+  height: auto;
+}
+.noticeBox-left .topArticle h2 {
+  margin-left: 3px;
+}
+.noticeBox-left .topArtPic {
+  width: 100%;
+  height: 232px;
+  margin-top: 15px;
+}
+.noticeBox-left .topArtPic img {
+  width: 100%;
+  height: 232px;
+  background-color: #ccc;
+}
+.noticeBox-left .topArtInfo h2 {
+  margin-top: 15px;
+  font-size: 24px;
+  text-align: start;
+}
+.noticeBox-left .topArtInfo p {
+  font-size: 22px;
+  text-align: start;
+  color: #ccc;
+  margin-top: 10px;
 }
 .noticeBox-middle {
-    width: 304px;
-    height: 400px;
+  width: 304px;
+  height: 470px;
+}
+.noticeBox-middle .togglePage {
+  float: right;
+  display: flex;
+  margin-top: 5px;
+}
+.noticeBox-middle .togglePage i {
+  font-size: 20px;
+}
+.noticeBox-middle .ArticleBox {
+  margin-top: 51px;
+}
+.noticeBox-middle .ArticleBox ul {
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.noticeBox-middle .ArticleBox ul li {
+  margin-bottom: 10px;
+  text-align: start;
+}
+.noticeBox-middle .ArticleBox ul li h2 {
+  font-weight: 600;
+  font-size: 24px;
+}
+.noticeBox-middle .ArticleBox ul li p {
+  color: #ccc;
+  font-size: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .noticeBox-right {
-    width: 304px;
-    height: 400px;
+  width: 304px;
+  height: 470px;
 }
+.noticeBox-right .hotArticle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.noticeBox-right .hotArticle div {
+  display: flex;
+}
+.noticeBox-right .hotArticle div img {
+  width: 30px;
+  height: auto;
+}
+.noticeBox-right .hotArticle div h2 {
+  margin-left: 3px;
+}
+.noticeBox-right .hotArticle div i {
+  font-size: 20px;
+}
+.noticeBox-right .hotArticle .togglePage {
+  margin-right: 5px;
+}
+.noticeBox-right .HotArticleBox {
+  margin-top: 15px;
+}
+.noticeBox-right .HotArticleBox ul {
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.noticeBox-right .HotArticleBox ul li {
+  margin-bottom: 10px;
+  text-align: start;
+}
+.noticeBox-right .HotArticleBox ul li h2 {
+  font-weight: 600;
+  font-size: 24px;
+}
+.noticeBox-right .HotArticleBox ul li p {
+  color: #ccc;
+  font-size: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* 头部广告轮播图开始 */
+.slide {
+  width: 338px;
+  height: 470px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.slide .slideCon {
+  width: 100%;
+}
+.slide .slideCon .focus {
+  height: 470px;
+  position: relative;
+}
+.slide .slideCon .focus .arrow-l,
+.slide .slideCon .focus .arrow-r {
+  z-index: 999;
+  transition: all 0.3s;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+}
+.slide .slideCon .focus .arrow-l:hover,
+.slide .slideCon .focus .arrow-r:hover {
+  background-color: #ccc;
+}
+.slide .slideCon .focus .arrow-l {
+  transform: translate(-60px);
+  left: 30px;
+}
+.slide .slideCon .focus .arrow-r {
+  transform: translate(60px);
+  right: 30px;
+}
+.slide .slideCon .focus ul {
+  position: absolute;
+  display: flex;
+  width: 2000px;
+}
+.slide .slideCon .focus ul li {
+  width: 338px;
+}
+.slide .slideCon .focus ul li img {
+  width: 100%;
+  height: auto;
+}
+.slide .slideCon .focus ol {
+  z-index: 888;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -70px;
+}
+.slide .slideCon .focus ol li {
+  float: left;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 0 8px;
+  /*鼠标经过显示小手*/
+  cursor: pointer;
+}
+.slide .slideCon .focus ol .current {
+  background-color: #ff6f00;
+}
+/* 头部广告轮播图结束 */
 /* 主体内容头部结束 */
+/* 主体开始 */
+.mainPart {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1380px;
+}
+.main-left {
+  margin-right: 30px;
+  width: 996px;
+  height: 500px;
+}
+.main-right {
+  width: 336px;
+}
+.main-right .Box1 {
+  width: 100%;
+}
+.main-right .Box1 .actList {
+  width: 100%;
+}
+.main-right .Box1 .actList ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main-right .Box1 .actList ul li {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+.main-right .Box1 .actList ul li .actBox img {
+  width: 28px;
+}
+.main-right .Box1 .actList ul li .actBox span {
+  font-size: 18px;
+  line-height: 38px;
+  margin-left: 5px;
+}
+.main-right .Box3 {
+  margin-top: 25px;
+}
+.main-right .Box3 .Box1-nav .living img {
+  height: 24px;
+}
+.main-right .Box3 .living-box ul li {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-right .Box3 .living-box ul li img {
+  width: 120px;
+  height: 68px;
+  background-color: #ccc;
+}
+.main-right .Box3 .living-box ul li div {
+  margin-left: 5px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main-right .Box3 .living-box ul li div p {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: start;
+}
+.main-right .Box3 .living-box ul li div span {
+  text-align: start;
+  font-size: 12px;
+  color: #ccc;
+}
+.mainCon {
+  display: flex;
+  justify-content: space-between;
+}
+.main-nav {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f0f2;
+}
+.main-nav ul {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+.main-nav ul li a {
+  font-size: 20px;
+  white-space: nowrap;
+  color: #777888;
+}
+.main-nav ul .current {
+  position: relative;
+}
+.main-nav ul .current a {
+  color: #000;
+  display: block;
+}
+.main-nav ul .current a::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -15px;
+  background-color: #000;
+}
+.mainArticle {
+  width: 100%;
+}
+.mainArticle .mainBox {
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 15px 0;
+  display: flex;
+}
+.mainArticle .mainBox img {
+  width: 177px;
+  height: 116px;
+  background-color: #777888;
+  display: block;
+  overflow: hidden;
+}
+.mainArticle .mainBox .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mainArticle .mainBox .content .info {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.mainArticle .mainBox .content .info p {
+  text-align: start;
+}
+.mainArticle .mainBox .content .info h2 {
+  text-align: start;
+}
+.mainArticle .mainBox .content .footer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.mainArticle .mainBox .content .footer div {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+.main-nav > ul > li {
+  padding: 15px;
+  box-sizing: border-box;
+}
+.sort-list {
+  line-height: 48px;
+  font-size: 22px;
+}
+.mainRight-box {
+  border-radius: 2px;
+  border: 1px solid #f0f0f2;
+}
+.Box1-nav {
+  display: flex;
+  justify-content: space-between;
+  line-height: 48px;
+  padding: 0 8px;
+}
+.Box1-nav > span {
+  font-size: 20px;
+  font-weight: 600;
+}
+.Box2 {
+  margin-top: 30px;
+}
+.Box2 h3 {
+  padding: 20px 10px 10px;
+}
+.Box2 img {
+  width: 34px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.Box2 img:hover {
+  transform: translateY(-10px);
+}
+.comment {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.comment div {
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+/* 主体结束 */

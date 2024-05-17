@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSDN - 专业开发者社区</title>
     <link rel="icon" href="./images/favicon32.ico">
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="stylesheet" href="./fonts/iconfont.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/ajax.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/index.js"></script>
 </head>
 <body>
+    <!-- 底部固定按钮 -->
+
+
     <!-- 导航部分开始 -->
     <nav>
         <div class="pubCon navCon">
@@ -30,7 +35,7 @@
                 <button><i class="iconfont">&#xe650;</i>搜索</button>
             </div>
             <div class="nav-right">
-                <div class="nav-login"><a href="">登录</a></div>
+                <div class="nav-login J_openLoginPage"><a href="#">登录</a></div>
                 <ul>
                     <li><a href="#">会员中心</a></li>
                     <li><a href="#">消息</a></li>
@@ -94,27 +99,372 @@
     <section class="wrap ntCon">
         <div class="notice-box">
             <div class="noticeBox-left">
-
+                <div class="topArticle">
+                    <img src="./images/top.png" alt=""><h2>头条</h2>
+                </div>
+                <div class="topArtPic J_topArtPic">
+                    <img src="" alt="">
+                </div>
+                <div class="topArtInfo J_topArtInfo">
+                    <h2></h2>
+                    <p></p>
+                </div>
             </div>
-            <div class="noticeBox-middle"></div>
-            <div class="noticeBox-right"></div>
+            <div class="noticeBox-middle">
+                <div class="togglePage">
+                    <i class="iconfont">&#xe685;</i>
+                    <i class="iconfont">&#xe687;</i>
+                </div>
+                <div class="ArticleBox J_ArticleBox">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="noticeBox-right">
+                <div class="hotArticle">
+                    <div>
+                    <img src="./images/hot.png" alt=""><h2>热点</h2>
+                    </div>
+                    <div class="togglePage">
+                        <i class="iconfont">&#xe685;</i>
+                        <i class="iconfont">&#xe687;</i>
+                    </div>
+                </div>
+                <div class="HotArticleBox J_HotArticleBox">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slideCon">
+                <div class="focus J_focus">
+                    <a href="javascript:;" class="arrow-l J_leftArrow"><i class="iconfont">&#xe685;</i></a>
+                    <a href="javascript:;" class="arrow-r J_rightArrow"><i class="iconfont">&#xe687;</i></a>
+                    
+                    <ul>
+                        
+                        <li><a href="#"><img src="./images/focus1.png" alt=""></a></li>
+                        <li><a href="#"><img src="./images/focus2.png" alt=""></a></li>
+                        <li><a href="#"></a><img src="./images/focus3.jpeg" alt=""></li>
+                        <li><a href="#"></a><img src="./images/focus4.jpeg" alt=""></li>
+                    </ul>
+                    <ol class="circle">
+
+                    </ol>
+                </div>
+            </div>
         </div>
     </section>
     <!-- 头部部分结束 -->
-
-    <section class="mainPart">
-        <div class="pubCon mainCon">
+    <!-- 主体文章部分开始 -->
+    <section class="pubCon mainPart">
+        <div class="mainCon">
             <div class="main-left">
-                <div class="main-nav">
+                <div class="main-nav J_mainNav">
+                    <ul>
+                        <li class="current"><a href="#">推荐</a></li>
+                        <li><a href="#">资讯</a></li>
+                        <li><a href="#">热榜</a></li>
+                        <li><a href="#">自荐</a></li>
+                        <li><a href="#">动态</a></li>
+                        <li><a href="#">有红包</a></li>
+                    </ul>
+                    <div class="sort-list">
+                        <i class="iconfont">&#xe6dd;</i>
+                        排行榜
+                    </div>
                 </div>
-                <div class="main"></div>
+                <div class="mainArticle J_mainArticle">
+
+                </div>
             </div>
             <div class="main-right">
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="mainRight-box Box1">
+                    <div class="Box1-nav">
+                        <span>向你推荐</span>
+                        <div>所有活动<i class="iconfont">&#xe687;</i></div>
+                        
+                    </div>
+                    <div class="actList">
+                        <ul>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity1.png" alt="">
+                                    <span>AI工具百宝箱</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                            <li>
+                                <div class="actBox">
+                                    <img src="./images/activity2.jpg" alt="">
+                                    <span>开放原子开发者工作坊</span>
+                                </div>
+                                <i class="iconfont">&#xe687;</i>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+                <div class="mainRight-box Box3">
+                    <div class="Box1-nav">
+                        <div class="living">
+                            <img src="./images/living.png" alt="">
+                            <span>直播</span>
+                        </div>
+                
+                        <div>更多<i class="iconfont">&#xe687;</i></div>
+                
+                    </div>
+                    <div class="living-box">
+                        <ul>
+                            <li>
+                                <img src="./images/livingImg.png" alt="">
+                                <div>
+                                    <p>拯救者杯OPENAIGC开发者大赛能量加油站</p>
+                                    <span>05/18 20:00</span>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="./images/livingImg.png" alt="">
+                                <div>
+                                    <p>拯救者杯OPENAIGC开发者大赛能量加油站</p>
+                                    <span>05/18 20:00</span>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="./images/livingImg.png" alt="">
+                                <div>
+                                    <p>拯救者杯OPENAIGC开发者大赛能量加油站</p>
+                                    <span>05/18 20:00</span>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="./images/livingImg.png" alt="">
+                                <div>
+                                    <p>拯救者杯OPENAIGC开发者大赛能量加油站</p>
+                                    <span>05/18 20:00</span>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="./images/livingImg.png" alt="">
+                                <div>
+                                    <p>拯救者杯OPENAIGC开发者大赛能量加油站</p>
+                                    <span>05/18 20:00</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mainRight-box Box2">
+                    <h3>您愿意向朋友推荐“CSDN首页”吗？</h3>
+                    <div class="comment">
+                        
+                        <div>
+                            <img src="./images/满意-01.png" alt="">
+                            <span>强烈推荐</span>
+                        </div>
+                        <div>
+                            <img src="./images/Expression2.png" alt="">
+                            <span>一般推荐</span>
+                        </div>
+                        <div>
+                            <img src="./images/嗯 .png" alt="">
+                            <span>不推荐</span>
+                        </div>
+                        <div>
+                            <img src="./images/3.png" alt="">
+                            <span>极其不推荐</span>
+                        </div>
+
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
+    <!-- 主体文章部分结束 -->
+    <!-- 登录模态框 -->
+    <div class="loginPage-module J_userPage" style="display: none;">
+        <div class="container">
+            <form action="" class="login-form J_loginForm" style="display: block;">
+                <div class="closeForm J_closeForm"><i class="iconfont">&#xe623;</i></div>
+                <h1>登录享更多权益</h1>
+                <h2>提高技能水平 <span>海量资源免费使用</span></h2>
+                <div class="title">密码登录</div>
+
+                <div class="input-box">
+                    <input type="text" id="J_loginUsername" class="text-box username-box" placeholder="手机号/邮箱/用户名"/>
+                    <i class="iconfont clearInput clearUsername J_clearInput">&#xe621;</i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="J_loginPassword" class="text-box password-box" placeholder="密码"/>
+                    <i class="iconfont clearInput J_clearInput">&#xe621;</i>
+                    <i class="iconfont hidePw J_hidePw">&#xe7a8;</i>
+                    <i class="iconfont hidePw J_showPw" style="display: none;">&#xe730;</i>
+                    <input type="checkbox" class="persistedPw J_persistedPw" /><p>七天免登录</p>
+                    <span class="missPw J_missPw"><a href="#">忘记密码</a></span>
+                </div>
+                <div class="input-box loginBtn-box">
+                    <button class="login-btn J_loginBtn">登录</button>
+                    <a href="javascript:;" class="ToSignUP J_toRegister">还没有账号？快去注册！</a>
+                </div>
+            </form>
+            <!-- 注册模态框 -->
+            <form action="" class="login-form J_signUpForm" style="display: none;">
+                <div class="closeForm J_closeForm"><i class="iconfont">&#xe623;</i></div>
+                <div class="title">用户注册</div>
+            
+                <div class="input-box">
+                    <input type="text" id="J_username" class="text-box username-box" placeholder="手机号/邮箱/用户名" />
+                    <i class="iconfont clearInput clearUsername J_clearInput">&#xe621;</i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="J_password" class="text-box password-box" placeholder="密码" />
+                    <i class="iconfont clearInput J_clearInput">&#xe621;</i>
+                    <i class="iconfont hidePw J_hidePw">&#xe7a8;</i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="J_isPassword" class="text-box password-box" placeholder="确认密码" />
+                    <i class="iconfont hidePw J_hidePw">&#xe7a8;</i>
+                </div>
+                <div class="input-box loginBtn-box">
+                    <button class="login-btn J_signUpBtn">注册</button>
+                    <a href="javascript:;" class="ToSignUP J_toLogin">已经有账号？回去登录！</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/html" id="J_mainArticleCon">
+        <div class="mainBox">
+            <img src="{{ img }}" alt="">
+            <div class="content">
+                <div class="info">
+                    <h2>{{ title }}</h2>
+                    <p>{{ content }}</p>
+                </div>
+        
+                <div class="footer">
+                    <div class="zan">
+                        <i class="iconfont">&#xe62a;</i>
+                        <span>{{ liked }}赞</span>
+                    </div>
+                    <div class="cai">
+                        <i class="iconfont">&#xe64d;</i>
+                        <span>{{ disliked }}踩</span>
+                    </div>
+                    <div class="author">
+                        <span>作者：{{ username }}</span>
+                    </div>
+                    <i class="iconfont">&#xe601;</i>
+                </div>
+            </div>
+        </div>
+    </script>
 </body>
 </html>
