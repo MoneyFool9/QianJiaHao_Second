@@ -62,7 +62,7 @@ function debounce(fn, delay) {
 }
 
 function scrollToBottom(callback) {
-    if (getScrollTop() + getWindowHeight() === getScrollHeight()) {
+    if (Math.ceil(getScrollTop()) + Math.ceil(getWindowHeight()) === Math.ceil(getScrollHeight())) {
         callback();
     }
 }

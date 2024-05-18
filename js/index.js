@@ -8,7 +8,9 @@ window.addEventListener('DOMContentLoaded', () => {
             clearUserNameInput = doc.getElementsByClassName('J_clearInput')[2],
             clearPassWordInput = doc.getElementsByClassName('J_clearInput')[3],
             hidePw = doc.getElementsByClassName('J_hidePw')[1],
-            hideConfirmPw = doc.getElementsByClassName('J_hidePw')[2];
+            showPw = doc.getElementsByClassName('J_showPw')[1],
+            hideConfirmPw = doc.getElementsByClassName('J_hidePw')[2],
+            showConfirmPw = doc.getElementsByClassName('J_showPw')[2];
 
         return {
             openSignUpBoard: () => {
@@ -50,16 +52,57 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             },
             clearUserNameInputEvent: () => {
-
+                clearUserNameInput.addEventListener('click', () => {
+                    oUsername.value = '';
+                    clearUserNameInput.style.display = 'none';
+                }, false);
             },
             clearPassWordInputEvent: () => {
-
+                clearPassWordInput.addEventListener('click', () => {
+                    oPassword.value = '';
+                    clearPassWordInput.style.display = 'none';
+                    hidePw.style.display = 'none';
+                }, false);
             },
             hidePwEvent: () => {
-
+                hidePw.addEventListener('click', () => {
+                    hidePw.style.display = 'none';
+                    showPw.style.display = 'block';
+                    oPassword.type = 'text';
+                }, false);
+            },
+            showPwEvent: () => {
+                showPw.addEventListener('click', () => {
+                    hidePw.style.display = 'block';
+                    showPw.style.display = 'none';
+                    oPassword.type = 'password';
+                }, false);
             },
             hideConfirmPwEvent: () => {
-
+                hideConfirmPw.addEventListener('click', () => {
+                    hideConfirmPw.style.display = 'none';
+                    showConfirmPw.style.display = 'block';
+                    oIsPassword.type = 'text';
+                }, false);
+            },
+            showConfirmPwEvent: () => {
+                showConfirmPw.addEventListener('click', () => {
+                    showConfirmPw.style.display = 'none';
+                    hideConfirmPw.style.display = 'block';
+                    oIsPassword.type = 'password';
+                }, false);
+            },
+            clearInput: () => {
+                oUsername.value = '';
+                oPassword.value = '';
+                oIsPassword.value = '';
+                clearUserNameInput.style.display = 'none';
+                clearPassWordInput.style.display = 'none';
+                hidePw.style.display = 'none';
+                showPw.style.display = 'none';
+                hideConfirmPw.style.display = 'none';
+                showConfirmPw.style.display = 'none';
+                oSubmitBtn.className = 'login-btn J_signUpBtn';
             }
         }
     })(document)
@@ -102,11 +145,14 @@ window.addEventListener('DOMContentLoaded', () => {
             clearUserNameInputEvent: () => {
                 clearUserNameInput.addEventListener('click', () => {
                     oUsername.value = '';
+                    clearUserNameInput.style.display = 'none';
                 }, false);
             },
             clearPassWordInputEvent: () => {
                 clearPassWordInput.addEventListener('click', () => {
                     oPassword.value = '';
+                    clearPassWordInput.style.display = 'none';
+                    hidePw.style.display = 'none';
                 }, false);
             },
             hidePwEvent: () => {
@@ -122,6 +168,15 @@ window.addEventListener('DOMContentLoaded', () => {
                     showPw.style.display = 'none';
                     oPassword.type = 'password';
                 }, false);
+            },
+            clearInput: () => {
+                oUsername.value = '';
+                oPassword.value = '';
+                clearUserNameInput.style.display = 'none';
+                clearPassWordInput.style.display = 'none';
+                hidePw.style.display = 'none';
+                showPw.style.display = 'none';
+                oSubmitBtn.className = 'login-btn J_loginBtn';
             }
         }
 
@@ -150,18 +205,31 @@ window.addEventListener('DOMContentLoaded', () => {
                 closeFormBtn2 = doc.getElementsByClassName('J_closeForm')[1],
                 openFormBtn = doc.getElementsByClassName('J_openLoginPage')[0],
                 toRegister = doc.getElementsByClassName('J_toRegister')[0],
-                toLogin = doc.getElementsByClassName('J_toLogin')[0];
+                toLogin = doc.getElementsByClassName('J_toLogin')[0],
+                loginInfo = doc.getElementsByClassName('J_loginInfo')[0],
+                openBtn = doc.getElementsByClassName('J_openBtn')[0],
+                _openBtn = doc.getElementsByClassName('J_openBtn')[1],
+                headerTypeBox = doc.getElementsByClassName('J_headerTypeBox')[0],
+                headerType_ul = doc.getElementsByClassName('J_headerType_ul')[0],
+                headerType_ul_li = headerType_ul.querySelectorAll('a'),
+                TypeBoxDown = doc.getElementById('J_down'),
+                TypeBoxUp = doc.getElementById('J_up'),
+                mainRightFixed = doc.getElementById('mainRightFixed');
             //初始化变量值
             var num = 0,
                 flag = true,
                 circle = 0,
-                timer = null;
+                timer = null,
+                isLoading = false,
+                isToBottom = true,
+                page = 1;
 
             var API = {
                 getArticleList: 'http://1.12.220.218:8585/cat/article/all',
                 getHotArticle: 'http://1.12.220.218:8585/cat/article/hot',
                 userLogin: 'http://1.12.220.218:8585/cat/user/login',
-                userRegister: 'http://1.12.220.218:8585/cat/user/register'
+                userRegister: 'http://1.12.220.218:8585/cat/user/register',
+                getArticleType: 'http://1.12.220.218:8585/cat/article/getTypes'
             };
 
             const init = () => {
@@ -172,6 +240,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 getHotArticle(5, 1, _setHotArticleData);
                 someEffects();
                 getArticleList(10, 1, _setMainArticleData);
+                getArticleType();
                 signUpAction.checkInput();
                 loginAction.checkInput();
             }
@@ -236,6 +305,20 @@ window.addEventListener('DOMContentLoaded', () => {
                 })
             }
 
+            const getArticleType = () => {
+                ajax({
+                    url: API.getArticleType,
+                    success: (res) => {
+                        if (res.code === 200) {
+                            console.log('res=>', res);
+                            _setArticleType(res);
+                        } else {
+                            console.log('请求数据失败');
+                        }
+                    }
+                })
+            }
+
             const _setHotArticleData = (res) => {
                 var HotArticleBox_ul = HotArticleBox.querySelector('ul')
                 for (let i = 0; i < res.data.records.length; i++) {
@@ -250,7 +333,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const _setMainArticleData = (res) => {
                 if (res.data && res.data.records && res.data.records.length) {
-                    mainArticleBox.innerHTML = renderMainArticle(res.data.records);
+                    mainArticleBox.innerHTML += renderMainArticle(res.data.records);
+                }
+            }
+
+            const _setArticleType = (res) => {
+                if (res.data && res.data.length) {
+                    for (let i = 0; i < res.data.length; i++) {
+                        headerType_ul_li[i].innerText = res.data[i].name;
+                    }
+                }
+            }
+
+            const getMoreArticle = () => {
+                if (!isLoading) {
+                    isLoading = true;
+                    page++;
+                    getArticleList(10, page, _setMainArticleData);
+
+                    setTimeout(() => {
+                        isLoading = false;
+                    }, 2000)
                 }
             }
 
@@ -263,12 +366,45 @@ window.addEventListener('DOMContentLoaded', () => {
                 closeFormBtn1.addEventListener('click', signUpAction.closeSignUpBoard, false);
                 closeFormBtn2.addEventListener('click', signUpAction.closeSignUpBoard, false);
                 openFormBtn.addEventListener('click', signUpAction.openSignUpBoard, false);
+                openBtn.addEventListener('click', () => {
+                    signUpAction.openSignUpBoard();
+                    loginInfo.style.transition = 'none';
+                    loginInfo.style.visibility = 'hidden';
+                    loginInfo.style.opacity = '0';
+                }, false);
+                _openBtn.addEventListener('click', signUpAction.openSignUpBoard, false);
+                openFormBtn.addEventListener('mouseenter', loginMouseIn, false);
+                openFormBtn.addEventListener('mouseleave', loginMouseOut, false);
                 toRegister.addEventListener('click', toRegisterClick, false);
                 toLogin.addEventListener('click', toLoginClick, false);
-                loginAction.clearPassWordInputEvent;
-                loginAction.clearUserNameInputEvent;
-                loginAction.hidePwEvent;
-                loginAction.showPwEvent;
+                loginAction.clearPassWordInputEvent();
+                loginAction.clearUserNameInputEvent();
+                loginAction.hidePwEvent();
+                loginAction.showPwEvent();
+                signUpAction.clearUserNameInputEvent();
+                signUpAction.clearPassWordInputEvent();
+                signUpAction.hidePwEvent();
+                signUpAction.showPwEvent();
+                signUpAction.hideConfirmPwEvent();
+                signUpAction.showConfirmPwEvent();
+                headerTypeBox.addEventListener('mouseenter', TypeBoxMouseIn, false);
+                headerTypeBox.addEventListener('mouseleave', TypeBoxMouseOut, false);
+                window.addEventListener('scroll', () => {
+                    scrollToBottom(getMoreArticle);
+                    isMainRightFixed();
+                }, false);
+            }
+
+            const TypeBoxMouseIn = () => {
+                headerType_ul.classList.add('active');
+                TypeBoxDown.style.display = 'none';
+                TypeBoxUp.style.display = 'block';
+            }
+
+            const TypeBoxMouseOut = () => {
+                headerType_ul.classList.remove('active');
+                TypeBoxDown.style.display = 'block';
+                TypeBoxUp.style.display = 'none';
             }
 
             const focusMouseIn = () => {
@@ -285,6 +421,16 @@ window.addEventListener('DOMContentLoaded', () => {
                 slide_leftArrow.style.opacity = 0;
                 slide_leftArrow.style.transform = 'translate(-60px)';
                 slide_rightArrow.style.transform = 'translate(60px)';
+            }
+
+            const loginMouseIn = () => {
+                loginInfo.style.visibility = 'visible';
+                loginInfo.style.opacity = '1';
+            }
+
+            const loginMouseOut = () => {
+                loginInfo.style.visibility = 'hidden';
+                loginInfo.style.opacity = '0';
             }
 
             const sdLeftClick = () => {
@@ -341,11 +487,13 @@ window.addEventListener('DOMContentLoaded', () => {
             const toRegisterClick = () => {
                 loginForm.style.display = 'none';
                 registerForm.style.display = 'block';
+                loginAction.clearInput();
             }
 
             const toLoginClick = () => {
                 registerForm.style.display = 'none';
                 loginForm.style.display = 'block';
+                signUpAction.clearInput();
             }
 
             const createDocument = () => {
@@ -374,6 +522,20 @@ window.addEventListener('DOMContentLoaded', () => {
                     slide_ol.children[i].className = '';
                 }
                 slide_ol.children[circle].className = 'current';
+            }
+
+            const isMainRightFixed = () => {
+                const scrollTop = getScrollTop();
+                const clientHeight = mainRightFixed.clientHeight;
+
+                if (isToBottom && scrollTop >= 1300) {
+                    isToBottom = false;
+                    console.log(1);
+                    mainRightFixed.classList.add('active');
+                } else if (scrollTop < 1300) {
+                    isToBottom = true;
+                    mainRightFixed.classList.remove('active');
+                }
             }
 
             const autoSlide = (show) => {
