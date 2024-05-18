@@ -25,6 +25,13 @@ function animate(obj, target, callback) {
     }, 15);
 }
 
+function getUrlQueryValue(key) {
+    const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i');
+    const res = window.location.search.substring(1).match(reg);
+
+    return res !== null ? decodeURIComponent(res[2]) : null; 
+}
+
 function throttle(fn, delay) {
     var t = null,
         begin = new Date().getTime();
