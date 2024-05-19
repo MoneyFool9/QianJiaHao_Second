@@ -1098,6 +1098,9 @@ nav {
   align-items: center;
   justify-content: center;
 }
+.searchContent .mainCon {
+  margin-bottom: 50px;
+}
 .searchContent .search-bar {
   box-sizing: border-box;
   margin: 15px 0;
@@ -1172,4 +1175,54 @@ nav {
 }
 .searchContent .searchCon-left {
   background-color: #fff;
+}
+.searchContent #searchCon {
+  box-sizing: border-box;
+  padding: 10px 15px;
+}
+.searchContent #search-right {
+  height: auto;
+}
+.searchUserInfo-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px 5px;
+  border-bottom: 1px solid #ccc;
+}
+.searchUserInfo-box .InfoBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+.searchUserInfo-box .InfoBox img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.searchUserInfo-box .InfoBox .content {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+.searchUserInfo-box .InfoBox .content .info {
+  text-align: start;
+}
+.searchUserInfo-box .InfoBox .content .info p {
+  margin-top: 10px;
+}
+.searchUserInfo-box .doFollow {
+  width: 100px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  line-height: 30px;
+  border-radius: 20px;
 }

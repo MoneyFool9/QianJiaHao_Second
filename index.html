@@ -19,7 +19,7 @@
     <nav>
         <div class="pubCon navCon">
             <div class="nav-left">
-                <a href="#"><img src="./images/logo.png" alt=""></a>
+                <a href="./index.html"><img src="./images/logo.png" alt=""></a>
                 <ul>
                     <li><a href="#">博客</a></li>
                     <li><a href="#">下载</a></li>
@@ -520,8 +520,8 @@
             <div class="search-bar">
                 <div class="s-nav J_searchNav">
                     <ul>
-                        <li class="current"><a href="javascript:;">全站</a></li>
-                        <li><a href="javascript:;">用户</a></li>
+                        <li class="current" data-field="all"><a href="javascript:;">全站</a></li>
+                        <li data-field="user"><a href="javascript:;">用户</a></li>
                         <li><a href="javascript:;">博客</a></li>
                         <li><a href="javascript:;">下载</a></li>
                         <li><a href="javascript:;">课程</a></li>
@@ -544,9 +544,9 @@
             <section class="pubCon mainPart">
                 <div class="mainCon">
                     <div class="main-left searchCon-left">
-                        <div class="mainArticle J_searchCon"></div>
+                        <div class="mainArticle J_searchCon" id="searchCon"></div>
                     </div>
-                    <div class="main-right searchCon-right">
+                    <div class="main-right searchCon-right" id="search-right">
                         <div class="main-right-box">
                             <div class="mainRight-box Box1">
                                 <div class="Box1-nav">
@@ -748,6 +748,10 @@
                             </div>
                         </div>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
             </section>
         </div>
     </div>
@@ -918,6 +922,24 @@
                     </ul>
                 </div>
             </div>
+    </script>
+    <script type="text/html" id="J_searchUserInfo">
+        <div class="searchUserInfo-box">
+            <div class="InfoBox">
+                <img src="{{ img }}" alt="">
+                <div class="content">
+                    <div class="info">
+                        <h2>{{ username }}</h2>
+                        <p>原创 {{ id }} 粉丝 {{fans}} 关注 {{ follows }}</p>
+                    </div>
+                
+                    <div class="footer">
+                        <span>{{ intro }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doFollow">关注</div>
+        </div>
     </script>
 </body>
 </html>
