@@ -1,5 +1,121 @@
 @import url(./reset.less);
 
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.nav-login-btn{
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    line-height: 40px;
+}
+.userLoginInfo{
+    &:hover{
+        .userImg-box{
+            transform: translateY(15px) scale(1.5);
+        }
+        .userInfo-box{
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+.nav-login{
+    .userImg-box{
+        z-index: 19999;
+        position: absolute;
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        transition: all .3s;
+        .userImg {
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+}
+.userInfo-box{
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s;
+    position: absolute;
+    z-index: 9999;
+    top: 40px;
+    left: -102px;
+    width: 248px;
+    color: #222226;
+    min-height: 200px;
+    background: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .06);
+    border-radius: 4px;
+    box-sizing: border-box;
+    .userMsg-box{
+        display: flex;
+        flex-direction: column;
+        .userInfo{
+            display: flex;
+            ul{
+                box-sizing: border-box;
+                padding: 0 25px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid #ccc;
+            }
+        }
+        .userName{
+            color: #000;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+    }
+    .user-cards {
+        ul {
+            margin-top: 15px;
+            text-align: start;
+            width: 100%;
+            display: flex ;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            li{
+                i{
+                    font-size: 18px;
+                }
+                span{
+                    margin-left: 5px;
+                }
+                box-sizing: border-box;
+                padding: 0 15px;
+                &:hover{
+                    background-color: #ccc;
+                }
+                &:last-child{
+                    position: relative;
+                    margin: 15px 0;
+                    &::after{
+                        position: absolute;
+                        top: -15px;
+                        left: 0;
+                        content: '';
+                        width: 100%;
+                        border-bottom: 1px solid #ccc;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .loginPage-module{
     position: absolute;
     top: 0;
@@ -48,6 +164,14 @@
                 font-weight: 700;
                 margin-bottom: 15px;
             }
+            .errorTip {
+                width: 100%;
+                color: rgb(244, 68, 68);
+                font-size: 14px;
+                margin-left: 5px;
+                text-align: start;
+                display: inline-block;
+            }
             .input-box {
                 position: relative;
                 width: 100%;
@@ -60,7 +184,7 @@
                     display: none;
                     position: absolute;
                     right: 40px;
-                    top: 48%;
+                    top: 31%;
                 }
                 .clearInput.show{
                     display: block;
@@ -69,11 +193,17 @@
                     right: 10px;
                     top: 30%;
                 }
+                .login-clear {
+                    top: 22%;
+                }
                 .hidePw{
                     display: none;
                     position: absolute;
                     right: 10px;
-                    top: 50%;
+                    top: 29%;
+                }
+                .login-hide{
+                    top: 22%;
                 }
                 .hidePw.show{
                     display: block;
@@ -109,9 +239,6 @@
                     margin-top: 4px;
                     margin-left: 5px;
                 }
-                .password-box{
-                    margin-top: 20px;
-                }
                 .login-btn {
                     cursor: default;
                     color: #fff;
@@ -125,7 +252,7 @@
                     border: 0 none;
                     font-size: 16px;
                     font-weight: 500;
-                    margin-top: 15px;
+                    margin-top: 10px;
                     
                 }
                 .login-btn.checked{
@@ -223,7 +350,7 @@ nav {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #cecccc;
+    // background-color: #cecccc;
     line-height: 40px;
 }
 
@@ -405,7 +532,7 @@ nav {
     }
 }
 
-.nav-right ul {
+.nav-right>ul {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -425,7 +552,6 @@ nav {
     height: 38px;
     border-radius: 20px;
     line-height: 38px;
-    color: #fff;
     background-color: #fc5531;
     color: #fff;
     font-size: 17px;
@@ -769,7 +895,7 @@ nav {
                 position: absolute;
                 bottom: 15px;
                 left: 50%;
-                margin-left: -70px;
+                margin-left: -78px;
                 li{
                     float: left;
                     width: 25px;

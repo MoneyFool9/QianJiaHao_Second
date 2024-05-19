@@ -42,9 +42,9 @@
                 </div>
             </div>
             <div class="nav-right">
-                <div class="nav-login J_openLoginPage">
-                    <a href="#">登录</a>
-                    <div class="loginInfo-box J_loginInfo">
+                <div class="nav-login J_openLoginPage userLoginInfo">
+                    <a class="nav-login-btn" href="#">登录</a>
+                    <div class="loginInfo-box J_loginInfo" onclick="stopPropagation(event)">
                         <span>登录后您可以：</span>
                         <div class="loginInfo">
                             <div>
@@ -536,7 +536,7 @@
                         <ul>
                             <li class="current"><a href="javascript:;">综合</a></li>
                             <li><a href="javascript:;">最新</a></li>
-                            <li><a href="javascript:;">入门</a></li>
+                            <li><a href="javascript:;">热门</a></li>
                         </ul>
                     </div>
                 </div>
@@ -766,13 +766,16 @@
                     <input type="text" id="J_loginUsername" class="text-box username-box" placeholder="手机号/邮箱/用户名"/>
                     <i class="iconfont clearInput clearUsername J_clearInput">&#xe621;</i>
                 </div>
+                <span class="errorTip J_Login_UerrorTip clearfix"></span>
                 <div class="input-box">
                     <input type="password" id="J_loginPassword" class="text-box password-box" placeholder="密码"/>
-                    <i class="iconfont clearInput J_clearInput">&#xe621;</i>
-                    <i class="iconfont hidePw J_hidePw">&#xe7a8;</i>
-                    <i class="iconfont hidePw J_showPw" style="display: none;">&#xe730;</i>
+                    <i class="iconfont clearInput J_clearInput login-clear">&#xe621;</i>
+                    <i class="iconfont hidePw J_hidePw login-hide">&#xe7a8;</i>
+                    <i class="iconfont hidePw J_showPw login-hide" style="display: none;">&#xe730;</i>
+                    <span class="errorTip J_Login_PerrorTip clearfix"></span>
                     <input type="checkbox" class="persistedPw J_persistedPw" /><p>七天免登录</p>
                     <span class="missPw J_missPw"><a href="#">忘记密码</a></span>
+                    
                 </div>
                 <div class="input-box loginBtn-box">
                     <button class="login-btn J_loginBtn">登录</button>
@@ -788,17 +791,20 @@
                     <input type="text" id="J_username" class="text-box username-box" placeholder="手机号/邮箱/用户名" />
                     <i class="iconfont clearInput clearUsername J_clearInput">&#xe621;</i>
                 </div>
+                <span class="errorTip J_UerrorTip clearfix"></span>
                 <div class="input-box">
                     <input type="password" id="J_password" class="text-box password-box" placeholder="密码" />
                     <i class="iconfont clearInput J_clearInput">&#xe621;</i>
                     <i class="iconfont hidePw J_hidePw">&#xe7a8;</i>
                     <i class="iconfont hidePw J_showPw" style="display: none;">&#xe730;</i>
                 </div>
+                <span class="errorTip J_PerrorTip clearfix"></span>
                 <div class="input-box">
                     <input type="password" id="J_isPassword" class="text-box password-box" placeholder="确认密码" />
                     <i class="iconfont hidePw J_hidePw">&#xe7a8;</i>
                     <i class="iconfont hidePw J_showPw" style="display: none;">&#xe730;</i>
                 </div>
+                <span class="errorTip J_IserrorTip clearfix"></span>
                 <div class="input-box loginBtn-box">
                     <button class="login-btn J_signUpBtn">注册</button>
                     <a href="javascript:;" class="ToSignUP J_toLogin">已经有账号？回去登录！</a>
@@ -831,6 +837,87 @@
                 </div>
             </div>
         </div>
+    </script>
+    <script type="text/html" id="J_loginStatusToggle">
+            <a class="userImg-box" href="#"><img class="userImg" src="{{ userImg }}" alt=""></a>
+            <div class="userInfo-box J_loginInfo" onclick="stopPropagation(event)">
+                <div class="userMsg-box">
+                    <div class="userName">
+                        <span>{{ userName }}</span>
+                    </div>
+                    <div class="userInfo">
+                        <ul>
+                            <li>
+                                <h3>{{ fans }}</h3>
+                                <span>粉丝</span>
+                                
+                            </li>
+                            <li>
+                                <h3>{{ follows }}</h3>
+                                <span>关注</span>
+                                
+                            </li>
+                            <li>
+                                <h3>{{ like }}</h3>
+                                <span>获赞</span>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="user-cards">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont">&#xe71d;</i>
+                                <span>个人中心</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont">&#xe686;</i>
+                                <span>内容管理</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont">&#xec17;</i>
+                                <span>我的文章</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont">&#xec17;</i>
+                                <span>我的文章</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont">&#xec17;</i>
+                                <span>我的文章</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont">&#xec17;</i>
+                                <span>我的文章</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont">&#xec17;</i>
+                                <span>我的文章</span>
+                            </a>
+                        </li>
+                        <li id="J_loginOutBtn">
+                            <a href="#">
+                                <i class="iconfont">&#xe61d;</i>
+                                <span>退出</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
     </script>
 </body>
 </html>

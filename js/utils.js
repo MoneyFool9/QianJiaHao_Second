@@ -29,7 +29,7 @@ function getUrlQueryValue(key) {
     const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i');
     const res = window.location.search.substring(1).match(reg);
 
-    return res !== null ? decodeURIComponent(res[2]) : null; 
+    return res !== null ? decodeURIComponent(res[2]) : null;
 }
 
 function throttle(fn, delay) {
@@ -72,6 +72,10 @@ function scrollToBottom(callback) {
     if (Math.ceil(getScrollTop()) + Math.ceil(getWindowHeight()) === Math.ceil(getScrollHeight())) {
         callback();
     }
+}
+
+function stopPropagation(event) {
+    event.stopPropagation();
 }
 
 /****** 内部函数 ******/
