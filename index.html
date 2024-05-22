@@ -164,7 +164,7 @@
     <!-- 导航部分结束 -->
 
     <!-- 主模块部分开始 -->
-    <div class="mainContent J_mainContent" style="display: none;">
+    <div class="mainContent J_mainContent" style="display: block;">
         <header class="wrap">
             <div class="pubCon hdCon">
                 <div class="nav-tag">
@@ -936,7 +936,7 @@
     </div>
 
     <!-- 用户详情页部分 -->
-    <div class="userDetailPage-box J_userDetailPage">
+    <div class="userDetailPage-box J_userDetailPage" style="display: none;">
         <div class="userDetail-box">
             <div class="userDetail-header-banner">
 
@@ -1010,6 +1010,36 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile-body">
+                        <div class="user-profile-body-inner">
+                            <div class="user-profile-body-left">
+                                <div class="user-profile-aside">
+                                    <div class="user-influence-list user-profile-aside-common-box">
+                                        <ul>
+                                            <li>
+                                                <div class="influence-top aside-common-box-head">
+                                                    <div class="influence-left"></div>
+                                                    <div class="influence-right"></div>
+                                                </div>
+                                                <div class="influence-bottom-box">
+                                                    <div class="influence-bottom"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-profile-body-right">
+                                <div class="navList-box">
+                                    <div class="navList">
+                                        <ul></ul>
+                                        <div class="search-input"></div>
+                                    </div>
+                                    <div class="mainContent"></div>
                                 </div>
                             </div>
                         </div>
@@ -1143,7 +1173,7 @@
                                 <span>个人中心</span>
                             </a>
                         </li>
-                        <li>
+                        <li id="J_toUserProfile">
                             <a href="javascript:;">
                                 <i class="iconfont">&#xe686;</i>
                                 <span>内容管理</span>

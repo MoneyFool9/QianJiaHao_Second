@@ -1710,20 +1710,20 @@ nav {
         }
         .userDetail{
             .user-profile{
-                padding-left: 16px;
-                padding-right: 24px;
-                background: #fff;
                 width: 1320px;
-                height: 165px;
                 margin: 0 auto;
                 border-radius: 2px;
                 .user-profile-head{
+                    width: 100%;
+                    background: #fff;
                     display: flex;
                     justify-content: space-between;
+                    height: 120px;
                     .user-profile-head-l{
                         display: flex;
                         flex: 1;
                         .user-profile-head-ll{
+                            padding-left: 16px;
                             position: relative;
                             width: 102px;
                             height: 90px;
@@ -1747,6 +1747,7 @@ nav {
                         .user-profile-head-rr{
                             flex: 1;
                             margin-left: 16px;
+                            padding-right: 24px;
                             .user-profile-head-r-tt{
                                 display: flex;    
                                 align-items: center;
@@ -1837,6 +1838,106 @@ nav {
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+                .user-profile-body{
+                    margin-top: 10px;
+                    .user-profile-body-inner{
+                        width: 1320px;
+                        display: flex;
+                        height: 1200px;
+                        min-height: 700px;
+                        padding-bottom: 32px;
+                        margin: 10px auto 0;
+                        .user-profile-body-left{
+                            background: #fff;
+                            width: 338px;
+                            flex: none;
+                            margin-right: 10px;
+                            .user-profile-aside{
+                                width: 338px;
+                                position: sticky;
+                                top: 64px;
+                                .user-profile-aside-common-box{
+                                    background: #fff;
+                                    border-radius: 2px;
+                                    margin-bottom: 10px;
+                                    ul{
+                                        li{
+                                            .side-common-box-head{
+                                                display: flex;
+                                                justify-content: space-between;
+                                                align-items: center;
+                                                font-size: 16px;
+                                                color: #222226;
+                                                font-weight: 500;
+                                                line-height: 48px;
+                                                padding-left: 16px;
+                                                border-bottom: 1px solid #e8e8ed;
+                                                .influence-left{
+                                                    display: flex;
+                                                    flex: 1;
+                                                    align-items: center;
+                                                }
+                                                .influence-right{
+                                                    display: flex;
+                                                    align-items: center;
+                                                    text-align: right;
+                                                    margin-right: 16px;
+                                                }
+                                            }
+                                            .influence-bottom-box{
+                                                padding: 16px;
+                                                .influence-bottom{
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: space-between;
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .user-profile-body-right{
+                            background: #fff;
+                            flex: 1;
+                            overflow: hidden;
+                            .navList-box{
+                                width: 100%;
+                                position: relative;
+                                border-radius: 2px;
+                                .navList{
+                                    width: 100%;
+                                    height: 48px;
+                                    line-height: 48px;
+                                    background: #fff;
+                                    box-shadow: 0 1px 0 0 #e8e8ed;
+                                    border-radius: 2px 2px 0 0;
+                                    display: flex;
+                                    align-items: center;
+                                    padding-right: 16px;
+                                    transform: translateZ(0);
+                                    ul{
+                                        font-size: 16px;
+                                        color: #555666;
+                                    }
+                                    .search-input{
+                                        flex: 1;
+                                        display: flex;
+                                        align-items: center;
+                                        position: relative;
+                                        width: 100%;
+                                        height: 32px;
+                                        justify-content: flex-end;
+                                    }
+                                }
+                                .mainContent{
+
                                 }
                             }
                         }

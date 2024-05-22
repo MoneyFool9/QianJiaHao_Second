@@ -286,15 +286,20 @@ window.addEventListener('DOMContentLoaded', () => {
             toMyUserPage: () => { 
                 window.location.href = '?field=userInfo';
             },
+            toUserProfile: () => {
+                window.location.href = '?field=userProfile';
+            },
             loginEvent: function (isLogin) {
                 if (isLogin) {
                     var loginOutBtn = doc.getElementById('J_loginOutBtn'),
                         toMyUserBtn = doc.getElementById('J_toMyUserBtn'),
-                        userImgBox = doc.getElementById('J_userImgBox');
+                        userImgBox = doc.getElementById('J_userImgBox'),
+                        toUserProfile = doc.getElementById('J_toUserProfile');
                         
                     loginOutBtn.addEventListener('click', this.loginOut, false);
                     toMyUserBtn.addEventListener('click', this.toMyUserPage, false);
                     userImgBox.addEventListener('click', this.toMyUserPage, false);
+                    toUserProfile.addEventListener('click', this.toUserProfile, false);
                 }
             },
 
@@ -380,6 +385,10 @@ window.addEventListener('DOMContentLoaded', () => {
     })(document)
 
     const userDetailAction = ((doc) => {
+        var userDetailPage = doc.getElementsByClassName('J_userDetailPage')[0],
+            mainContent = doc.getElementsByClassName('J_mainContent')[0];
+
+
         var API = {
             doFollow: 'http://1.12.220.218:8585/cat/user/follow',
             getFansList: 'http://1.12.220.218:8585/cat/user/fans',
@@ -389,7 +398,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         return {
-
+            checkedUrlToDetail: () => {
+                if (getUrlQueryValue('field') === 'userProfile') {
+                    mainContent.style.display = 'none';
+                    userDetailPage.style.display = '';
+                }
+            }
         }
     })(document)
 
@@ -517,6 +531,7 @@ window.addEventListener('DOMContentLoaded', () => {
             loadSearchContent();
             loginAction.checkAuth();
             userInfoModifyAction.checkedUrlToUser();
+            userDetailAction.checkedUrlToDetail();
         }
 
         const getArticleList = (pageSize, page, fn) => {
