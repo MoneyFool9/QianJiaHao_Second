@@ -169,7 +169,15 @@ window.addEventListener('DOMContentLoaded', () => {
             oU_ErrorTip = doc.getElementsByClassName('J_Login_UerrorTip')[0],
             oP_ErrorTip = doc.getElementsByClassName('J_Login_PerrorTip')[0],
             loginStatusToggle = doc.getElementById('J_loginStatusToggle').innerHTML,
-            openLoginPage = doc.getElementsByClassName('J_openLoginPage')[0];
+            openLoginPage = doc.getElementsByClassName('J_openLoginPage')[0],
+            loginedHistory = doc.getElementById('J_loginedHistory').innerHTML,
+            historyBox = doc.getElementsByClassName('J_historyBox')[0];
+
+        var API = {
+            submitLogin: 'http://1.12.220.218:8585/cat/user/login',
+            getUserInfo: 'http://1.12.220.218:8585/cat/user/me',
+            logout: 'http://1.12.220.218:8585/cat/user/logout'
+        }
 
         return {
             login: function (e) {
@@ -190,8 +198,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 this.submitForm(username, password, isPersistedLogin);
             },
             submitForm: function (username, password, isPersistedLogin) {
+                _self = this;
                 ajax({
-                    url: 'http://1.12.220.218:8585/cat/user/login',
+                    url: API.submitLogin,
                     method: 'POST',
                     data: {
                         username: username,
@@ -203,6 +212,7 @@ window.addEventListener('DOMContentLoaded', () => {
                             window.localStorage.setItem('Token', res.data);
                             alert('登录成功！');
                             window.location.reload();
+                            _self.checkAuth();
                         } else {
                             alert(res.msg);
                         }
@@ -214,8 +224,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (Token !== null) {
                     this.getUserInfo();
                     this.render(true);
-                    this.loginOutEvent(true);
+                    this.loginEvent(true);
                 }
+                
             },
             render: (isLogin) => {
                 if (isLogin) {
@@ -232,12 +243,14 @@ window.addEventListener('DOMContentLoaded', () => {
                             }[key.trim()];
                         })
                     }
+
+                    historyBox.innerHTML = loginedHistory;
                 }
             },
             getUserInfo: () => {
                 var Token = window.localStorage.getItem('Token');
                 ajax({
-                    url: 'http://1.12.220.218:8585/cat/user/me',
+                    url: API.getUserInfo,
                     headers: {
                         token: Token
                     },
@@ -253,7 +266,7 @@ window.addEventListener('DOMContentLoaded', () => {
             },
             loginOut: () => {
                 ajax({
-                    url: 'http://1.12.220.218:8585/cat/user/logout',
+                    url: API.logout,
                     method: 'POST',
                     header: {
                         token: window.localStorage.getItem('Token')
@@ -261,6 +274,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     success: (res) => {
                         if (res.code === 200) {
                             window.localStorage.removeItem('Token');
+                            window.localStorage.removeItem('userInfo');
                             window.location.reload();
                             alert('退出成功');
                         } else {
@@ -269,10 +283,18 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                 })
             },
-            loginOutEvent: function(isLoginOut) {
-                if (isLoginOut) {
-                    var loginOutBtn = doc.getElementById('J_loginOutBtn');
-                    loginOutBtn.addEventListener('click',this.loginOut,false);
+            toMyUserPage: () => { 
+                window.location.href = '?field=userInfo';
+            },
+            loginEvent: function (isLogin) {
+                if (isLogin) {
+                    var loginOutBtn = doc.getElementById('J_loginOutBtn'),
+                        toMyUserBtn = doc.getElementById('J_toMyUserBtn'),
+                        userImgBox = doc.getElementById('J_userImgBox');
+                        
+                    loginOutBtn.addEventListener('click', this.loginOut, false);
+                    toMyUserBtn.addEventListener('click', this.toMyUserPage, false);
+                    userImgBox.addEventListener('click', this.toMyUserPage, false);
                 }
             },
 
@@ -344,6 +366,74 @@ window.addEventListener('DOMContentLoaded', () => {
 
     })(document)
 
+    const commentAction = ((doc) => {
+        var API = {
+            postComment: 'http://1.12.220.218:8585/cat/comment/post',
+            deleteComment: 'http://1.12.220.218:8585/cat/comment/delete',
+            getFirstComment: 'http://1.12.220.218:8585/cat/comment/first',
+            getMultiComment: 'http://1.12.220.218:8585/cat/comment/multi'
+        }
+
+        return {
+
+        }
+    })(document)
+
+    const userDetailAction = ((doc) => {
+        var API = {
+            doFollow: 'http://1.12.220.218:8585/cat/user/follow',
+            getFansList: 'http://1.12.220.218:8585/cat/user/fans',
+            getFollowList: 'http://1.12.220.218:8585/cat/user/follows',
+            getArticleList: 'http://1.12.220.218:8585/cat/article/me',
+            isFollow: 'http://1.12.220.218:8585/cat/user/isFollow'
+        }
+
+        return {
+
+        }
+    })(document)
+
+    const userInfoModifyAction = ((doc) => {
+        var myUserPage = doc.getElementsByClassName('J_myUserPage')[0],
+            mainContent = doc.getElementsByClassName('J_mainContent')[0];
+
+
+        var API = {
+            modifyUserInfo: 'http://1.12.220.218:8585/cat/user/modify/userInfo',
+            modifyUserPassword: 'http://1.12.220.218:8585/cat/user/modify/password',
+            uploadUserImg: 'http://1.12.220.218:8585/cat/file/uploadImg',
+        }
+
+        return {
+            checkedUrlToUser: () => {
+                if (getUrlQueryValue('field') === 'userInfo') {
+                    mainContent.style.display = 'none';
+                    myUserPage.style.display = '';
+                }
+            }
+        }
+    })(document)
+
+    const articleAction = ((doc) => {
+        var API = {
+            postArticle: 'http://1.12.220.218:8585/cat/article/post',
+            modifyArticleCon: 'http://1.12.220.218:8585/cat/article/update',
+            deleteArticle: 'http://1.12.220.218:8585/cat/article/delete',
+            collectArticle: 'http://1.12.220.218:8585/cat/article/collect',
+            likeArticle: 'http://1.12.220.218:8585/cat/article/like',
+            dislikeArticle: 'http://1.12.220.218:8585/cat/article/dislike',
+            addArticleView: 'http://1.12.220.218:8585/cat/article/view',
+            isCollection: 'http://1.12.220.218:8585/cat/article/idCollected',
+            isLiked: 'http://1.12.220.218:8585/cat/article/isLiked',
+            getArticleDetail: 'http://1.12.220.218:8585/cat/article/detail',
+
+        }
+
+        return {
+
+        }
+    })(document)
+
     ; ((doc) => {
         //获取dom元素
         var slide_rightArrow = doc.getElementsByClassName('J_rightArrow')[0],
@@ -390,6 +480,7 @@ window.addEventListener('DOMContentLoaded', () => {
             registerBtn = doc.getElementsByClassName('J_signUpBtn')[0],
             loginBtn = doc.getElementsByClassName('J_loginBtn')[0],
             searchUserInfo = doc.getElementById('J_searchUserInfo').innerHTML;
+            
         //初始化变量值
         var num = 0,
             flag = true,
@@ -425,6 +516,7 @@ window.addEventListener('DOMContentLoaded', () => {
             loginAction.checkInput();
             loadSearchContent();
             loginAction.checkAuth();
+            userInfoModifyAction.checkedUrlToUser();
         }
 
         const getArticleList = (pageSize, page, fn) => {
@@ -906,5 +998,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     })(document)
-})  
+})
 

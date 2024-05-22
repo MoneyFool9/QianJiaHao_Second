@@ -361,10 +361,34 @@ nav {
     gap: 15px;
     .history-li{
         &:hover{
-            .history{
+            .history,.history-login{
                 visibility: visible !important;
                 opacity: 1 !important;
             }
+        }
+    }
+    .history-login{
+        visibility: hidden;
+        opacity: 0;
+        transition: all .3s;
+        z-index: 9999;
+        width: 520px;
+        position: absolute;
+        top: 40px;
+        left: -108px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        box-shadow: 0 0 10px 2px rgba(0, 0, 0, .06);
+        padding: 16px;
+        border-radius: 8px;
+
+        span {
+            font-size: 17px;
+            font-weight: 700;
+            text-align: start;
+            margin-bottom: 10px;
         }
     }
     .history{
@@ -1318,4 +1342,508 @@ nav {
         border-radius: 20px;
     }
     
+}
+
+.userPage-box{
+    padding-bottom: 15px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .userInfo{
+        margin-top: 15px;
+        display: flex;
+        .userInfo-bar{
+            width: 190px;
+            height: 417px;
+            background-color: #fff;
+            ul{
+                width: 190px;
+                height: 417px;
+                box-sizing: border-box;
+                padding: 15px 0;
+                display: flex;
+                flex-direction: column;
+                li{
+                    box-sizing: border-box;
+                    text-align: center;
+                    display: flex;
+                    // justify-content: space-between;
+                    justify-content: center;
+                    align-items: center;
+                    width: 190px;
+                    height: 48px;
+                    &:nth-child(7n){
+                        justify-content: space-between;
+                        padding: 0 15px;
+                        span{
+                            margin-left: 49px;
+                            
+                        }
+                    }
+                    &:nth-child(8n){
+                        justify-content: space-between;
+                        padding: 0 15px;
+                    
+                        span {
+                            margin-left: 34px;
+                    
+                        }
+                    }
+                    &:hover{
+                        background-color: #dfdfdf;
+                    }
+                    
+                }
+                .current{
+                        background-color: #dfdfdf;
+                }
+            }
+        }
+        .userContent-box{
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            .userMsg-box1{
+                width: 1000px;
+                // height: 174px;
+                background-color: #fff;
+                .userMsg-bar{
+                    display: flex;
+                    padding: 24px 0 40px 24px;
+                    box-sizing: border-box;
+                    .userImg{
+                            height: 92.5px;
+                            width: 92.5px;
+                            box-shadow: 0 0 10px 2px #0000000f;
+                            border: 2px solid #fff;
+                            border-radius: 50%;
+                            cursor: pointer;
+                        img{
+                            height: 92.5px;
+                            width: 92.5px;
+                            border-radius: 50%;
+                            display: block;
+                        }
+                    }
+                    .userIntro{
+                        margin-left: 15px;
+                        text-align: start;
+                        .userName{
+                            color: #222226;
+                            font-weight: 500;
+                            line-height: 24px;
+                            font-size: 20px;
+                            margin-right: 16px;
+                            margin-bottom: 10px;
+                        }
+                        .honor{
+                            position: relative;
+                            margin-left: 4px;
+                            height: 20px;
+                            font-size: 14px;
+                            font-weight: 400;
+                            color: #555666;
+                            line-height: 20px;
+                            margin-bottom: 25px;
+                            vertical-align: middle;
+                        }
+                        .vip{
+                            background: linear-gradient(270deg, #f8c883, #fae8d0);
+                            border-radius: 16px;
+                            padding: 4px 2px 4px 8px;
+                            font-size: 14px;
+                            box-sizing: border-box;
+                            text-align: center;
+                            button{
+                                width: 74px;
+                                height: 28px;
+                                border-radius: 14px 14px 14px 13px;
+                                text-align: center;
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 28px;
+                                background-color: #fff;
+                            }
+                        }
+                    }
+                }
+                .userAction-box{
+                    padding-left: 25px;
+                    box-sizing: border-box;
+                    width: 1000px;
+                    height: 48px;
+                    background-color: #f3e3e3d8;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 55px;
+                    .my{
+                        span{
+                            color: #fc5531;
+                        }
+                    }
+                    .to{
+                        color: #fff;
+                        background: #fc5531;
+                        width: 72px;
+                        height: 28px;
+                        line-height: 28px;
+                        text-align: center;
+                        border-radius: 15px;
+                        font-size: 14px;
+                    }
+                    .btn{
+                        background: #f2f2f2;
+                        color: #555666;
+                        height: 28px;
+                        border-radius: 16px;
+                        padding: 0 12px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        border: 1px solid rgb(17, 0, 255);
+                    }
+                }
+            }
+            .userMsg-box2{
+                width: 1000px;
+                height: 527.88px;
+                background-color: #fff;
+                margin-top: 10px;
+                .title{
+                    width: 100%;
+                    height: 48px;
+                    line-height: 48px;
+                    padding-left: 25px;
+                    font-size: 20px;
+                    font-weight: 800;
+                    box-sizing: border-box;
+                    text-align: start;
+                    border-bottom: 1px solid #f0f0f2;
+                }
+                .base-info-content{
+                    padding: 16px;
+                    box-sizing: border-box;
+                    .base-info-content-show{
+                            padding: 16px 58px 16px 0;
+                            position: relative;
+                            box-sizing: border-box;
+                        .base-info-edit-form{
+                            ul{
+                                    font-size: 100%;
+                                    vertical-align: baseline;
+                                li{
+                                    line-height: 24px;
+                                    font-size: 14px;
+                                    margin-bottom: 32px;
+                                    display: flex;
+                                    align-items: baseline;
+                                    .content-show-l{
+                                        width: 56px;
+                                        color: #555666;
+                                        margin-right: 40px;
+                                        flex-shrink: 0;
+                                        padding-left: 16px;
+                                        display: flex;
+                                        box-sizing: content-box;
+                                        justify-content: space-between;
+                                    }
+                                    .content-show-r{
+                                        color: #222226;
+                                        word-break: break-all;
+                                    }
+                                    .edit-icon{
+                                        display: none;
+                                        margin-left: 24px;
+                                        cursor: pointer;
+                                        align-items: baseline;
+                                        color: #1989fa;
+                                        font-size: 14px;
+                                        min-width: 50px;
+                                    }
+                                    .add-btn-wrap{
+                                        font-size: 14px;
+                                        color: #277ccc;
+                                        cursor: pointer;
+                                    }
+                                    .icon-add-blue{
+                                        width: 16px;
+                                        height: 16px;
+                                        display: inline-block;
+                                        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAJ9JREFUWEdjZBhgwEiu/Rq1Z9eC9N5oNg4m1wyQPrIdoF579j3jf4b/N1qMhUYdMBoCoyEwGgKjITD0QwBcsfxncET3yX9GPHXFfwZ+sHpGho/YQgBUT2ANGUaG/cgVGLgywuUAfEH7n4FBAFqbfSApCrA5gCQDoIpHa8PREBgNgdEQGA2B0RAY8K4ZORUY1mqbWgaRaw7ZnVNyLUTXBwDKCKsh+5ba+gAAAABJRU5ErkJggg==) no-repeat;
+                                        background-position: 50%;
+                                        background-size: 16px 16px;
+                                        position: relative;
+                                        top: 2px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .userMsg-box3{
+                width: 1000px;
+                // height: 320px;
+                background-color: #fff;
+                margin-top: 10px;
+                .edu-infor-box{
+                    header{
+                        display: flex;
+                        align-items: center;
+                        padding-left: 16px;
+                        border-bottom: 1px solid #f0f0f2;
+                        width: 100%;
+                        height: 48px;
+                        .edu-infor-title {
+                            font-size: 18px;
+                            font-weight: 600;
+                            color: #2e2e2e;
+                        }
+                        .edu-infor-cert{
+                            height: 28px;
+                            background: #fff3e5;
+                            border-radius: 2px;
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 0 10px;
+                            align-items: center;
+                            margin-left: 40px;
+                            .edu-infor-cert-title{
+                                color: #cb7812;
+                                margin-right: 24px;
+                                font-size: 14px;
+                            }
+                            .edu-infor-cert-action{
+                                background: #e6c39c;
+                                color: #fff;
+                                height: 22px;
+                                border-radius: 11px;
+                                font-size: 13px;
+                                a{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    height: 100%;
+                                    padding: 0 10px;
+                                }
+                            }
+                        }
+                    }
+                    .edu-infor-content{
+                        padding: 16px;
+                        .default-content{
+                            max-height: 272px;
+                            width: 100%;
+                            padding-top: 16px;
+                            cursor: pointer;
+                            position: relative;
+                            padding-left: 16px;
+                            .edit-btn{
+                                position: absolute;
+                                right: 16px;
+                                top: 16px;
+                                display: flex;
+                                align-items: center;
+                                .edit-img{
+                                    width: 16px;
+                                    height: 16px;
+                                }
+                                .edit-btn-text{
+                                    margin-left: 2px;
+                                    color: #1989fa;
+                                    font-size: 14px;
+                                }
+                            }
+                            ul{
+                                width: 100%;
+                                height: 100%;
+                                li{
+                                    width: 100%;
+                                        height: 56px;
+                                        display: -webkit-box;
+                                        display: -ms-flexbox;
+                                        display: flex;
+                                        -webkit-box-align: start;
+                                        -ms-flex-align: start;
+                                        align-items: flex-start;
+                                        font-size: 14px;
+                                    .default-content-title{
+                                        display: inline-block;
+                                        width: 56px;
+                                        height: 24px;
+                                        color: #555666;
+                                        margin-right: 40px;
+                                        text-align: right;
+                                    }
+                                    .default-content-text{
+                                        color: #999aaa;
+                                        height: 24px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.userDetailPage-box{
+    padding-bottom: 15px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .userDetail-box{
+        .userDetail-header-banner{
+            padding-top: 16px;
+            width: 1320px;
+            margin: auto;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: cover;
+            background-image: url(../images/no-bug.png);
+        }
+        .userDetail{
+            .user-profile{
+                padding-left: 16px;
+                padding-right: 24px;
+                background: #fff;
+                width: 1320px;
+                height: 165px;
+                margin: 0 auto;
+                border-radius: 2px;
+                .user-profile-head{
+                    display: flex;
+                    justify-content: space-between;
+                    .user-profile-head-l{
+                        display: flex;
+                        flex: 1;
+                        .user-profile-head-ll{
+                            position: relative;
+                            width: 102px;
+                            height: 90px;
+                            .user-profile-avatar{
+                                position: absolute;
+                                top: -12px;
+                                width: 102px;
+                                height: 102px;
+                                border: 4px solid #f0f0f2;
+                                border-radius: 50%;
+                                background: #fff;
+                                img {
+                                        width: 100%;
+                                        height: 100%;
+                                        display: block;
+                                        border-radius: 50%;
+                                    }
+                            }
+                            
+                        }
+                        .user-profile-head-rr{
+                            flex: 1;
+                            margin-left: 16px;
+                            .user-profile-head-r-tt{
+                                display: flex;    
+                                align-items: center;
+                                margin-top: 16px;
+                                .user-profile-head-name{
+                                    color: #222226;
+                                    font-size: 22px;
+                                    font-weight: 500;
+                                    line-height: 24px;
+                                    display: flex;
+                                    word-break: break-all;
+                                    align-items: flex-start;
+                                }
+                                .user-profile-head-info-r{
+                                    align-self: flex-start;
+                                    margin-left: auto;
+                                    .user-profile-operate-btn{
+                                        position: relative;
+                                        font-size: 0;
+                                        float: right;
+                                        display: flex;
+                                        .user-profile-black-btn{
+                                            border: 1px solid #ccccd8;
+                                            color: #555666;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            font-size: 14px;
+                                            width: 96px;
+                                            text-align: center;
+                                            height: 32px;
+                                            border-radius: 20px;
+                                            margin-left: 16px;
+                                            img{
+                                                width: 16px;
+                                                height: 16px;
+                                                margin-right: 4px;
+                                            }
+                                            &:hover{
+                                                border: 1px solid #484747;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .user-profile-head-r-cs{
+                                ul{
+                                    display: flex;
+                                    li{
+                                        display: flex;
+                                        align-items: center;
+                                        position: relative;
+                                        a {
+                                                display: flex;
+                                                align-items: center;
+                                                width: 100%;
+                                                height: 100%;
+                                            }
+                                        .user-profile-statistics-num{
+                                            color: #555666;
+                                            font-size: 14px;
+                                            font-weight: 500;
+                                            line-height: 24px;
+                                            margin-right: 4px;
+                                        }
+                                        .user-profile-statistics-name{
+                                            color: #555666;
+                                            font-size: 14px;
+                                            line-height: 16px;
+                                            margin-top: 2px;
+                                            white-space: nowrap;
+                                        }
+                                        .user-profile-statistics-bar{
+                                            width: 1px;
+                                            height: 16px;
+                                            background: #e8e8ed;
+                                            margin: 0 16px;
+                                        }
+                                        .user-profile-statistics-fan{
+                                            color: #555666;
+                                            font-size: 14px;
+                                            line-height: 16px;
+                                            margin-top: 2px;
+                                            img{
+                                                width: 16px;
+                                                height: 16px;
+                                                margin-right: 4px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
 }

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   text-align: center;
@@ -355,9 +356,33 @@ nav {
   display: flex;
   gap: 15px;
 }
-.nav-right .history-li:hover .history {
+.nav-right .history-li:hover .history,
+.nav-right .history-li:hover .history-login {
   visibility: visible !important;
   opacity: 1 !important;
+}
+.nav-right .history-login {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 9999;
+  width: 520px;
+  position: absolute;
+  top: 40px;
+  left: -108px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.06);
+  padding: 16px;
+  border-radius: 8px;
+}
+.nav-right .history-login span {
+  font-size: 17px;
+  font-weight: 700;
+  text-align: start;
+  margin-bottom: 10px;
 }
 .nav-right .history {
   visibility: hidden;
@@ -1225,4 +1250,485 @@ nav {
   border: 1px solid #ccc;
   line-height: 30px;
   border-radius: 20px;
+}
+.userPage-box {
+  padding-bottom: 15px;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.userPage-box .userInfo {
+  margin-top: 15px;
+  display: flex;
+}
+.userPage-box .userInfo .userInfo-bar {
+  width: 190px;
+  height: 417px;
+  background-color: #fff;
+}
+.userPage-box .userInfo .userInfo-bar ul {
+  width: 190px;
+  height: 417px;
+  box-sizing: border-box;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+.userPage-box .userInfo .userInfo-bar ul li {
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 190px;
+  height: 48px;
+}
+.userPage-box .userInfo .userInfo-bar ul li:nth-child(7n) {
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.userPage-box .userInfo .userInfo-bar ul li:nth-child(7n) span {
+  margin-left: 49px;
+}
+.userPage-box .userInfo .userInfo-bar ul li:nth-child(8n) {
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.userPage-box .userInfo .userInfo-bar ul li:nth-child(8n) span {
+  margin-left: 34px;
+}
+.userPage-box .userInfo .userInfo-bar ul li:hover {
+  background-color: #dfdfdf;
+}
+.userPage-box .userInfo .userInfo-bar ul .current {
+  background-color: #dfdfdf;
+}
+.userPage-box .userInfo .userContent-box {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 {
+  width: 1000px;
+  background-color: #fff;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar {
+  display: flex;
+  padding: 24px 0 40px 24px;
+  box-sizing: border-box;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar .userImg {
+  height: 92.5px;
+  width: 92.5px;
+  box-shadow: 0 0 10px 2px #0000000f;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar .userImg img {
+  height: 92.5px;
+  width: 92.5px;
+  border-radius: 50%;
+  display: block;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar .userIntro {
+  margin-left: 15px;
+  text-align: start;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar .userIntro .userName {
+  color: #222226;
+  font-weight: 500;
+  line-height: 24px;
+  font-size: 20px;
+  margin-right: 16px;
+  margin-bottom: 10px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar .userIntro .honor {
+  position: relative;
+  margin-left: 4px;
+  height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #555666;
+  line-height: 20px;
+  margin-bottom: 25px;
+  vertical-align: middle;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar .userIntro .vip {
+  background: linear-gradient(270deg, #f8c883, #fae8d0);
+  border-radius: 16px;
+  padding: 4px 2px 4px 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userMsg-bar .userIntro .vip button {
+  width: 74px;
+  height: 28px;
+  border-radius: 14px 14px 14px 13px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 28px;
+  background-color: #fff;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userAction-box {
+  padding-left: 25px;
+  box-sizing: border-box;
+  width: 1000px;
+  height: 48px;
+  background-color: #f3e3e3d8;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 55px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userAction-box .my span {
+  color: #fc5531;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userAction-box .to {
+  color: #fff;
+  background: #fc5531;
+  width: 72px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 14px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box1 .userAction-box .btn {
+  background: #f2f2f2;
+  color: #555666;
+  height: 28px;
+  border-radius: 16px;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #1100ff;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 {
+  width: 1000px;
+  height: 527.88px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .title {
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  padding-left: 25px;
+  font-size: 20px;
+  font-weight: 800;
+  box-sizing: border-box;
+  text-align: start;
+  border-bottom: 1px solid #f0f0f2;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content {
+  padding: 16px;
+  box-sizing: border-box;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show {
+  padding: 16px 58px 16px 0;
+  position: relative;
+  box-sizing: border-box;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show .base-info-edit-form ul {
+  font-size: 100%;
+  vertical-align: baseline;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show .base-info-edit-form ul li {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: baseline;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show .base-info-edit-form ul li .content-show-l {
+  width: 56px;
+  color: #555666;
+  margin-right: 40px;
+  flex-shrink: 0;
+  padding-left: 16px;
+  display: flex;
+  box-sizing: content-box;
+  justify-content: space-between;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show .base-info-edit-form ul li .content-show-r {
+  color: #222226;
+  word-break: break-all;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show .base-info-edit-form ul li .edit-icon {
+  display: none;
+  margin-left: 24px;
+  cursor: pointer;
+  align-items: baseline;
+  color: #1989fa;
+  font-size: 14px;
+  min-width: 50px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show .base-info-edit-form ul li .add-btn-wrap {
+  font-size: 14px;
+  color: #277ccc;
+  cursor: pointer;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box2 .base-info-content .base-info-content-show .base-info-edit-form ul li .icon-add-blue {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAJ9JREFUWEdjZBhgwEiu/Rq1Z9eC9N5oNg4m1wyQPrIdoF579j3jf4b/N1qMhUYdMBoCoyEwGgKjITD0QwBcsfxncET3yX9GPHXFfwZ+sHpGho/YQgBUT2ANGUaG/cgVGLgywuUAfEH7n4FBAFqbfSApCrA5gCQDoIpHa8PREBgNgdEQGA2B0RAY8K4ZORUY1mqbWgaRaw7ZnVNyLUTXBwDKCKsh+5ba+gAAAABJRU5ErkJggg==) no-repeat;
+  background-position: 50%;
+  background-size: 16px 16px;
+  position: relative;
+  top: 2px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 {
+  width: 1000px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box header {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  border-bottom: 1px solid #f0f0f2;
+  width: 100%;
+  height: 48px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box header .edu-infor-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e2e2e;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box header .edu-infor-cert {
+  height: 28px;
+  background: #fff3e5;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+  margin-left: 40px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box header .edu-infor-cert .edu-infor-cert-title {
+  color: #cb7812;
+  margin-right: 24px;
+  font-size: 14px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box header .edu-infor-cert .edu-infor-cert-action {
+  background: #e6c39c;
+  color: #fff;
+  height: 22px;
+  border-radius: 11px;
+  font-size: 13px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box header .edu-infor-cert .edu-infor-cert-action a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 10px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content {
+  padding: 16px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content {
+  max-height: 272px;
+  width: 100%;
+  padding-top: 16px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 16px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content .edit-btn {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  display: flex;
+  align-items: center;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content .edit-btn .edit-img {
+  width: 16px;
+  height: 16px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content .edit-btn .edit-btn-text {
+  margin-left: 2px;
+  color: #1989fa;
+  font-size: 14px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content ul {
+  width: 100%;
+  height: 100%;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content ul li {
+  width: 100%;
+  height: 56px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  font-size: 14px;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content ul li .default-content-title {
+  display: inline-block;
+  width: 56px;
+  height: 24px;
+  color: #555666;
+  margin-right: 40px;
+  text-align: right;
+}
+.userPage-box .userInfo .userContent-box .userMsg-box3 .edu-infor-box .edu-infor-content .default-content ul li .default-content-text {
+  color: #999aaa;
+  height: 24px;
+}
+.userDetailPage-box {
+  padding-bottom: 15px;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.userDetailPage-box .userDetail-box .userDetail-header-banner {
+  padding-top: 16px;
+  width: 1320px;
+  margin: auto;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-image: url(../images/no-bug.png);
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile {
+  padding-left: 16px;
+  padding-right: 24px;
+  background: #fff;
+  width: 1320px;
+  height: 165px;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head {
+  display: flex;
+  justify-content: space-between;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l {
+  display: flex;
+  flex: 1;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-ll {
+  position: relative;
+  width: 102px;
+  height: 90px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-ll .user-profile-avatar {
+  position: absolute;
+  top: -12px;
+  width: 102px;
+  height: 102px;
+  border: 4px solid #f0f0f2;
+  border-radius: 50%;
+  background: #fff;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-ll .user-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr {
+  flex: 1;
+  margin-left: 16px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-tt {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-tt .user-profile-head-name {
+  color: #222226;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 24px;
+  display: flex;
+  word-break: break-all;
+  align-items: flex-start;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-tt .user-profile-head-info-r {
+  align-self: flex-start;
+  margin-left: auto;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-tt .user-profile-head-info-r .user-profile-operate-btn {
+  position: relative;
+  font-size: 0;
+  float: right;
+  display: flex;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-tt .user-profile-head-info-r .user-profile-operate-btn .user-profile-black-btn {
+  border: 1px solid #ccccd8;
+  color: #555666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  width: 96px;
+  text-align: center;
+  height: 32px;
+  border-radius: 20px;
+  margin-left: 16px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-tt .user-profile-head-info-r .user-profile-operate-btn .user-profile-black-btn img {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-tt .user-profile-head-info-r .user-profile-operate-btn .user-profile-black-btn:hover {
+  border: 1px solid #484747;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul {
+  display: flex;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul li {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul li a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul li .user-profile-statistics-num {
+  color: #555666;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-right: 4px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul li .user-profile-statistics-name {
+  color: #555666;
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul li .user-profile-statistics-bar {
+  width: 1px;
+  height: 16px;
+  background: #e8e8ed;
+  margin: 0 16px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul li .user-profile-statistics-fan {
+  color: #555666;
+  font-size: 14px;
+  line-height: 16px;
+  margin-top: 2px;
+}
+.userDetailPage-box .userDetail-box .userDetail .user-profile .user-profile-head .user-profile-head-l .user-profile-head-rr .user-profile-head-r-cs ul li .user-profile-statistics-fan img {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
 }
