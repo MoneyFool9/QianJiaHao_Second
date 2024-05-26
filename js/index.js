@@ -225,10 +225,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     this.getUserInfo();
                     this.render(true);
                     this.loginEvent(true);
-                } else {
-                    alert('您还没有登录，快去登录吧！')
-                    window.location.href = 'index.html';
-                }
+                } 
 
             },
             render: (isLogin) => {
@@ -406,13 +403,16 @@ window.addEventListener('DOMContentLoaded', () => {
                     var commentReplayBtn = doc.getElementsByClassName('J_commentReplayBtn'),
                         secondCommentCon = doc.getElementsByClassName('J_secondCommentCon'),
                         deleteBtn = doc.getElementsByClassName('J_deleteBtn');
-                    for (let i = 0; i < commentReplayBtn.length; i++) {
-                        commentReplayBtn[i].addEventListener('click', _self.openReplayBroad, false)
-                        commentReplayBtn[i].setAttribute('data-i', i);
-                        secondCommentCon[i].addEventListener('input', _self.checkSecondInputNum, false)
-                        secondCommentCon[i].setAttribute('data-i', i);
-                        deleteBtn[i].addEventListener('click', _self.deleteComment, false);
+                    if (commentReplayBtn) {
+                        for (let i = 0; i < commentReplayBtn.length; i++) {
+                            commentReplayBtn[i].addEventListener('click', _self.openReplayBroad, false)
+                            commentReplayBtn[i].setAttribute('data-i', i);
+                            secondCommentCon[i].addEventListener('input', _self.checkSecondInputNum, false)
+                            secondCommentCon[i].setAttribute('data-i', i);
+                            deleteBtn[i].addEventListener('click', _self.deleteComment, false);
+                        }
                     }
+                    
 
                 }, 1500)
             },
@@ -587,7 +587,12 @@ window.addEventListener('DOMContentLoaded', () => {
                         content: commentValue || ''
                     }[key.trim()]
                 })
-                firstItem.insertAdjacentHTML('beforebegin', newElement)
+                if (firstItem) {
+                    firstItem.insertAdjacentHTML('beforebegin', newElement)
+                } else {
+                    commentListContainer.innerHTML += newElement;
+                }
+                
             },
             _appendSecondCmt: function () {
 
