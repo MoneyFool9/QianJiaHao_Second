@@ -11,7 +11,8 @@ function resolveData(data) {
 //     url: 请求地址
 //     method: 请求方式
 //     headers: 设置请求头
-//     data: 请求参数
+//     data: 请求传入Query参数
+//     path: 请求传入path参数 
 //     contentType: 请求头内容类型
 //     async: 同步异步参数
 //     dataType: 定义响应数据类型
@@ -51,9 +52,17 @@ function ajax(options) {
         xhr.ontimeout = options.timeoutCallback;
     }
 
-    var data = resolveData(options.data);  //处理参数
+    var data = resolveData(options.data),
+        path;//处理参数
+    for (let key in options.path) {
+        path = options.path[key];
+    }
     if (options.method.toUpperCase() === 'GET') {  //判断请求类型
-        xhr.open(options.method, options.url + (options.data ? '?' + data : ''), options.async); //传入url参数
+        if (options.path || options.data) {
+            xhr.open(options.method, options.url + (options.data ? '?' + data : path), options.async); //传入url参数
+        } else {
+            xhr.open(options.method, options.url +  '', options.async); //传入url参数
+        }
         if (options.headers) {
             for (var i in options.headers) {
                 xhr.setRequestHeader(i, options.headers[i]);  //设置请求头
@@ -62,6 +71,7 @@ function ajax(options) {
     } else if (options.method.toUpperCase() === 'POST') {
         xhr.open(options.method, options.url, options.async);
         xhr.setRequestHeader('Content-Type', options.contentType);
+
         if (options.headers) {
             for (var i in options.headers) {
                 xhr.setRequestHeader(i, options.headers[i]);  //设置请求头

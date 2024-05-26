@@ -25,6 +25,7 @@ function animate(obj, target, callback) {
     }, 15);
 }
 
+
 function getUrlQueryValue(key) {
     const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i');
     const res = window.location.search.substring(1).match(reg);

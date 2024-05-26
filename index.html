@@ -17,7 +17,7 @@
 
     <!-- 导航部分开始 -->
     <nav>
-        <div class="pubCon navCon">
+        <div class="pubCon navCon" id="J_navCon">
             <div class="nav-left">
                 <a href="./index.html"><img src="./images/logo.png" alt=""></a>
                 <ul>
@@ -90,7 +90,7 @@
                     <div class="postArticle-box J_postArticle">
                         <ul>
                             <li>
-                                <a href="javascript:;">
+                                <a id="J_postArticleBtn" href="javascript:;">
                                     <div class="liBox">
                                         <i class="iconfont">&#xe62e;</i>
                                     </div>
@@ -533,10 +533,11 @@
                 </div>
                 <div class="s-bar-common">
                     <div class="common-lt">
-                        <ul>
-                            <li class="current"><a href="javascript:;">综合</a></li>
+                        <ul id="J_commonList">
+                            <li class="current" data-click="allCon"><a href="javascript:;">综合</a></li>
+                            <li data-click="hotCon"><a href="javascript:;">热门</a></li>
                             <li><a href="javascript:;">最新</a></li>
-                            <li><a href="javascript:;">热门</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -758,6 +759,55 @@
     
     <!-- 个人主页部分 -->
     <div class="userPage-box J_myUserPage" style="display: none;">
+        <!-- form弹窗 -->
+        <div class="form-box" id="newPwdForm">
+            <div class="mask">
+                <div class="form-container">
+                    <div class="close" id="modifyPwdClose">
+                        <i class="iconfont">&#xe623;</i>
+                    </div>
+                    <form action="">
+                        <span>请输入新的密码</span>
+                        <div class="input-box">
+                            <div class="togglePwd" id="togglePwdBtn">
+                                <i class="iconfont">&#xe7a8;</i>
+                            </div>
+                            <input id="newPwInput" type="password" placeholder="请输入您要更改后的新密码">
+                            <button id="submitNewPw">确定</button>
+                        </div>
+                        
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+        <div class="form-box userInfoForm" id="modifyUserInfoForm" style="display: none;">
+            <div class="mask">
+                <div class="form-container">
+                    <div class="close" id="userInfoClose">
+                        <i class="iconfont">&#xe623;</i>
+                    </div>
+                    <form action="">
+                        <span>请输入新的用户名</span>
+                        <div class="input-box">
+                            <input id="userNameInput" type="text" placeholder="请输入您要更改后的新用户名">
+                        </div>
+                        <span>请输入新的个人简介</span>
+                        <div class="input-box">
+                            <input id="userIntroInput" type="text" placeholder="请输入您要更改后的新简介">
+                            
+                        </div>
+                        <span>请上传你的头像</span>
+                        <div class="input-img-box">
+                            <input id="userImgInput" type="file">
+                            <button class="uploadImg-btn" id="uploadImg">上传</button>
+                        </div>
+                        <button class="submit-btn" id="submitUserInfo">确定</button>
+                    </form>
+                </div>
+        
+            </div>
+        </div>
         <div class="userInfo">
             <div class="userInfo-bar">
                 <ul>
@@ -781,10 +831,13 @@
                 <div class="userMsg-box1">
                     <div class="userMsg-bar">
                         <div class="userImg">
-                            <img src="./images/userImg.png" alt="">
+                            <img id="userInfo_img" src="./images/userImg.png" alt="">
+                            <div class="userImg-mask">
+                                <img src="./images/icon-photo.png" alt="">
+                            </div>
                         </div>
                         <div class="userIntro">
-                            <div class="userName">小落叶</div>
+                            <div class="userName" id="userInfo_name">小落叶</div>
                             <div class="honor">
                                 <span>你还没有获得勋章，完成任务点亮哦~</span>
                                 <i class="iconfont">&#xe687;</i>
@@ -796,11 +849,9 @@
                         </div>
                     </div>
                     <div class="userAction-box">
-                        <div class="my">
-                            <span>我的余额</span>   0
-                        </div>
-                        <div class="to">去充值</div>
-                        <div class="btn">个人主页<i class="iconfont">&#xe687;</i></div>
+                        <div class="to" id="modifyPwdBtn" style="cursor: pointer;">修改密码</div>
+                        <div class="to" id="modifyUserInfoBtn" style="cursor: pointer;">修改资料</div>
+                        <div class="btn" id="J_toUserInfo">个人主页<i class="iconfont">&#xe687;</i></div>
                     </div>
 
                 </div>
@@ -812,13 +863,13 @@
                                 <ul>
                                     <li>
                                         <div class="content-show-l">用户昵称</div>
-                                        <div class="content-show-r">a1711258477</div> <!----> <!---->
+                                        <div class="content-show-r" id="userInfo_nickname">a1711258477</div> <!----> <!---->
                                         <div class="edit-icon"><i  ></i>编辑</div> <!----> <!---->
                                     </li>
                                     <li  >
                                         <div   class="content-show-l"><span  >用</span><span
                                                  >户</span><span  >ID</span></div>
-                                        <div   class="content-show-r">a1711258477</div>
+                                        <div   class="content-show-r" id="userInfo_id">a1711258477</div>
                                     </li>
                                     <li  >
                                         <div   class="content-show-l"><span  >性</span><span
@@ -828,7 +879,7 @@
                                     </li>
                                     <li  >
                                         <div   class="content-show-l">个人简介</div>
-                                        <div   class="content-show-r no-data">未填写
+                                        <div   class="content-show-r no-data" id="userInfo_intro">未填写
                                         </div> <!----> <!---->
                                         <div   class="edit-icon"><i  ></i>编辑</div> <!---->
                                     </li>
@@ -879,7 +930,6 @@
                             <div class="default-content">
                                 <div class="edit-btn">
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAB60lEQVRYCe1XP0vDUBC/q7GDOCi4WP8gOIqCH6BfwMVBEXXrqosIraurLYgOOomOBVerm6OjOPUjNE6CQxFs03e+S5vmvTQpSRqoQx6Ed+/evfvd/V5yvQKkY8wMoB9+rmIVgKhABJsANO1no+kQSa6vPkuTp5peWeSuaRlbnfVG0XhW1JBRFyznLlpVEuKeiPKhwL0OfNaLFdqAX+tdCFFbKtOqaqIxwJkzOAJ+YQaPZqYmXurH2FQPRJUZXJD1KhOaQ8QnycC2nJkxexiOYM+Sdp4ZXBo+NrTN6AsPeG12xdhVwdmjdgXdOwfgzKPD6Sd8wHfqe9jSrTwBOHeeMO2cuS84B6Mx4I0uzjps5o7vRAOICs5BJBZAHPDEAogLnkgAUcDny+1LfhjYGSNdQRTwHuCJnPnpj9gBnBNlBLVrvQo39FProxGh/I3Rqm/8ABAFELwhwt2w77wPHiDopTjAKEhtnmUPeM8MMgihj81ACN+hTNIAUgb+GwPd9mvtJkQjGuodd41cn3qLpzEgi8oHH/n+6Wy5R5ORHJ8OhuNVL0SID7JU5knQ7ULFsluzUbsjzpzB2acNyhjK0Ooy6+22HGBfsUlMlNlXzVL2UHU4EABvRv5jonockLFp0y4zN4uGlv2AaaoYBwN/reAFFzj+0usAAAAASUVORK5CYII=" alt="" class="edit-img"> 
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAB3ElEQVRYCe1Xu07DQBDcjaggZWhpqEHiAyIRoKKh4CGgSiipEF/AFyAqKpQEmkihJNBBaChRfgS6iAIlXnZMjO5sY/ySQuGVTt57zczu6U5rosKmnAEO419rS8MRapDQis6Xw9ZYY0zCQhf9Iz61xo3Oxo0sjB1a6tf53himktmBv9qSjuNQU8mr2v2b3A8Q0l+/luXRiF7FoZ4Gt2gusTLgRq7kzPROTMeVWXq43eOhuSGpD/LxmB51X0Ux7/p12mLWfE1sxnPwddMOR8k1VV24WcwiJ+rNz9GOSQ5s+wi+z5wQeRZi7A2Ql2lbs/npx7UFTM4817Qj8l/IIcYvwC8wcT9u5B5wrgKSkkNEbgLSkOcmIC15LgKSkNeaco4GYs8yHUESchAK0wmaR45vagFnIiV923uKUdEWedVA5JroE4dmWHoBzI7ivGgIV1H33OAKda2nOHRFxOBzgw8ipmNNpc5ALPQYiwoBRQb+XQbc8mu3K7nUguYlMDCtEs/OANMAm94+aNPcnIf/gznh8DCth6jE1NK6sKrP5WWtLW5plrU6QuQuuWKCFBweOb7Wu4wBlOUqYB9+3qZkHf13ODRxAwIwmfjHxEQM+kMNc4DIn+psRR9cWoxMIQNfUnLFMf361zQAAAAASUVORK5CYII=" alt="" class="edit-hover-img"> 
                                     <span class="edit-btn-text">认证</span></div>
                                 <ul >
                                     <li >
@@ -947,13 +997,13 @@
                         <div class="user-profile-head-l">
                             <div class="user-profile-head-ll">
                                 <div class="user-profile-avatar">
-                                    <img src="./images/userImg.png" alt="">
+                                    <img id="userMsg_img" src="./images/userImg.png" alt="">
                                 </div>
                             </div>
                             <div class="user-profile-head-rr">
                                 <div class="user-profile-head-r-tt">
                                     <div class="user-profile-head-name">
-                                        <div>小落叶</div>
+                                        <div id="userMsg_name">小落叶</div>
                                     </div>
                                     <div class="user-profile-head-info-r">
                                         <div class="user-profile-operate-btn">
@@ -1035,10 +1085,23 @@
                             </div>
                             <div class="user-profile-body-right">
                                 <div class="navList-box">
-                                    <div class="navList">
-                                        <ul></ul>
+                                    <div class="navList J_D_navList">
+                                        <ul>
+                                            <li class="current">最近</li>
+                                            <li>文章</li>
+                                            <li>资源</li>
+                                            <li>问答</li>
+                                            <li>帖子</li>
+                                            <li>视频</li>
+                                            <li>课程</li>
+                                            <li>关注/订阅/互动</li>
+                                            <li>收藏</li>
+                                        </ul>
                                         <div class="search-input"></div>
                                     </div>
+                                    
+                                </div>
+                                <div class="mainContent-box">
                                     <div class="mainContent"></div>
                                 </div>
                             </div>
@@ -1047,6 +1110,352 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- 文章详情页部分 -->
+    <div class="articleDetailPage-box J_articleDetailPage" style="display: none;">
+        <!-- 评论模态框 -->
+        <div class="comment-shadow" id="J_commentBroad">
+            <div class="comment-content"  onclick="stopPropagation(event)">
+                <div class="comment-title">
+                    <div class="comment-count">评论</div>
+                    <div class="comment-close-btn" id="J_commentCloseBtn">
+                        <img src="./images/icon-close.png" alt="">
+                    </div>
+                </div>
+                <div class="postComment-box">
+                    <div class="comment-edit-box">
+                        <div class="user-img">
+                            <a href="javascript:;">
+                                <img src="./images/userImg.png" alt="">
+                            </a>
+                        </div>
+                        <form id="J_commentForm">
+                            <textarea class="comment-content-area" name="comment_content" id="comment_content" placeholder="想对作者说点什么"
+                                maxlength="1000"></textarea>
+                            <div class="comment-operate-box">
+                                <div class="comment-operate-left">
+                                    <span>还能输入<em id="inputNumLimit">1000</em>个字符</span>
+                                </div>
+                                <div class="comment-operate-right">
+                                    <a href="javascript:;" class="submitCmt-btn" id="J_submitCmtBtn">评论</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="comment-list-container J_commentListContainer">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="articleDetail-box J_articleDetailBox">
+            <div class="articleDetail J_articleDetail">
+                <div class="DetailCon-left">
+                    <div class="relatedUserInfo">
+                        <div class="profile-intro d-flex">
+                            <div class="avatar-box d-flex justify-content-center flex-column">
+                                <a href="javascript:;">
+                                    <img src="./images/userImg.png"
+                                        class="avatar_pic">
+                                </a>
+                            </div>
+                            <div class="user-info d-flex flex-column profile-intro-name-box">
+                                <div class="profile-intro-name-boxTop">
+                                    <a href="javascript:;" target="_blank" class="" id="uid" title="做网站建设制作设计小程序推广">
+                                        <span id="card_name" class="name " username="bzyhyt">做网站建设制作设计小程序推广</span>
+                                    </a>
+                                    <span>
+                                    </span>
+                                </div>
+                                <div class="profile-intro-name-boxFooter">
+                                    <span class="personal-home-page personal-home-years" title="已加入 CSDN 6年">码龄6年</span>
+                                    <span class="personal-home-page">
+                                        <a class="personal-home-certification" href=""
+                                            target="_blank" title="暂无认证">
+                                            <img src="https://csdnimg.cn/identity/nocErtification.png" alt="">
+                                            暂无认证
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="data-info d-flex item-tiling">
+                            <dl class="text-center" title="61">
+                                <a href="javascript:;">
+                                    <dt><span class="count">61</span></dt>
+                                    <dd class="font">原创</dd>
+                                </a>
+                            </dl>
+                            <dl class="text-center">
+                                <a href="javascript:;" target="_blank">
+                                    <dt><span class="count">1万+</span></dt>
+                                    <dd class="font">周排名</dd>
+                                </a>
+                            </dl>
+                            <dl class="text-center" title="30504">
+                                <a href="javascript:;">
+                                    <dt><span class="count">3万+</span></dt>
+                                    <dd class="font">总排名</dd>
+                                </a>
+                            </dl>
+                            <dl class="text-center" style="min-width:58px" title="19471">
+                                <dt><span class="count">1万+</span></dt>
+                                <dd>访问</dd>
+                            </dl>
+                            <dl class="text-center" title="4级,点击查看等级说明">
+                                <dt><a href="javascript:;" target="_blank">
+                                        <img class="level" src="./images/rank.png">
+                                    </a>
+                                </dt>
+                                <dd>等级</dd>
+                            </dl>
+                        </div>
+                        <div class="item-rank"></div>
+                        <div class="data-info d-flex item-tiling">
+                            <dl class="text-center" title="1153">
+                                <dt><span class="count">1153</span></dt>
+                                <dd>积分</dd>
+                            </dl>
+                            <dl class="text-center" id="fanBox" title="312">
+                                <dt><span class="count" id="fan">312</span></dt>
+                                <dd>粉丝</dd>
+                            </dl>
+                            <dl class="text-center" title="424">
+                                <dt><span class="count">424</span></dt>
+                                <dd>获赞</dd>
+                            </dl>
+                            <dl class="text-center" title="3">
+                                <dt><span class="count">3</span></dt>
+                                <dd>评论</dd>
+                            </dl>
+                            <dl class="text-center" title="234">
+                                <dt><span class="count">234</span></dt>
+                                <dd>收藏</dd>
+                            </dl>
+                        </div>
+                        <div class="aside-box-footer">
+                            <div class="badge-box d-flex">
+                                <div class="badge d-flex">
+                                    <div class="icon-badge" title="新秀勋章">
+                                        <div class="mouse-box">
+                                            <img class="medal-img" data-report-click="{&quot;spm&quot;:&quot;3001.4296&quot;}"
+                                                src="./images/honor1.png" alt="新秀勋章">
+                                        </div>
+                                    </div>
+                                    <div class="icon-badge" title="持之以恒">
+                                        <div class="mouse-box">
+                                            <img class="medal-img" data-report-click="{&quot;spm&quot;:&quot;3001.4296&quot;}"
+                                                src="./images/honor2.png" alt="持之以恒">
+                                        </div>
+                                    </div>
+                                    <div class="icon-badge" title="持续创作">
+                                        <div class="mouse-box">
+                                            <img class="medal-img" data-report-click="{&quot;spm&quot;:&quot;3001.4296&quot;}"
+                                                src="./images/honor3.png" alt="持续创作">
+                                        </div>
+                                    </div>
+                                    <div class="icon-badge" title="勤写标兵">
+                                        <div class="mouse-box">
+                                            <img class="medal-img" data-report-click="{&quot;spm&quot;:&quot;3001.4296&quot;}"
+                                                src="./images/honor4.png" alt="勤写标兵">
+                                        </div>
+                                    </div>
+                                    <div class="icon-badge" title="笔耕不辍">
+                                        <div class="mouse-box">
+                                            <img class="medal-img" data-report-click="{&quot;spm&quot;:&quot;3001.4296&quot;}"
+                                                src="./images/honor5.png" alt="笔耕不辍">
+                                        </div>
+                                    </div>
+                                    <div class="icon-badge" title="创作能手">
+                                        <div class="mouse-box">
+                                            <img class="medal-img" data-report-click="{&quot;spm&quot;:&quot;3001.4296&quot;}"
+                                                src="./images/honor6.png" alt="创作能手">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-intro-name-boxOpration">
+                            <div class="opt-letter-watch-box">
+                                <a rel="nofollow" class="bt-button personal-letter" href="javascript:;"
+                                   >私信</a>
+                            </div>
+                            <div class="opt-letter-watch-box">
+                                <a class="personal-watch bt-button" id="btnAttent">关注</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="DetailCon-right">
+                    <div class="articleDetail-content">
+                        
+                    </div>
+                    <div class="toolbox">
+                        <div class="toolbox-left">
+                            <div class="profile-box">
+                                <a class="profile-href" target="_blank" href="javascript:;">
+                                    <img class="profile-img"
+                                        src="./images/userImg.png">
+                                    <span class="profile-name">
+                                        做网站建设制作设计小程序推广
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="profile-attend">
+                                <a href="javascript:;" class="tool-attend">关注</a>
+                            </div>
+                        </div>
+                        <div class="toolbox-right">
+                            <ul>
+                                <li>
+                                    <img src="./images/zan.png" alt="">
+                                    <span>10</span>
+                                </li>
+                                <li>
+                                    <img src="./images/cai.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="./images/shoucang.png" alt="">
+                                    <span>1</span>
+                                </li>
+                                <li id="J_commentOpenBtn" style="cursor: pointer;">
+                                    <img src="./images/pinglun.png" alt="">
+                                    <span>2</span>
+                                </li>
+                                <li>
+                                    <img src="./images/fenxiang.png" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="toolbox commentbox">
+                        <div class="commentbox-left">
+                            <div class="comment-count">
+                                <span>3条评论</span>
+                                <i class="iconfont">&#xe687;</i>
+                            </div>
+                            <div class="comment-con-box">
+                                <div class="comment-con">
+                                    <img src="./images/userImg.png" alt="">
+                                    <div class="user-name">小落叶</div>
+                                    <div class="comment">哈哈哈</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commentbox-right" id="J_openComment">写评论</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 发布文章部分 -->
+    <div class="postArticlePage-box J_postArticlePage" style="display: none;">
+        <form class="postArticle-form" action="">
+            <section class="post-edit-box">
+                <div class="post-edit-txtTitle">
+                    <textarea name="title" id="txtTitle" placeholder="请输入文章标题（5-100个字）" autofocus></textarea>
+                </div>
+                <div class="post-edit-txtCon">
+                    <textarea name="content" id="txtCon"
+                    placeholder="#创作灵感#
+• 记录工作实践、项目复盘
+• 写技术笔记巩固知识要点
+• 发表职场感悟心得
+• 搬运自己的原创文章到这"
+                    ></textarea>
+                </div>
+            </section>
+
+            <section class="txt-type-operater-box">
+                <div class="txt-type-operater">
+                    <ul>
+                        <li>
+                            <span>文章标签<svg data-v-00bc4474="" width="200" height="200" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon"
+                                style="fill: rgb(153, 154, 170) !important; margin-right: 12px;">
+                                <path data-v-00bc4474=""
+                                    d="M512 992.5C246.62 992.5 31.5 777.38 31.5 512S246.62 31.5 512 31.5 992.5 246.62 992.5 512 777.38 992.5 512 992.5zm0-96.1a384.4 384.4 0 100-768.8 384.4 384.4 0 000 768.8zM324.605 388.271c0-23.496 7.544-47.281 22.584-71.354 15.087-24.121 37.094-44.062 66.02-59.87 28.926-15.857 62.657-23.737 101.194-23.737 35.845 0 67.462 6.63 94.898 19.845 27.389 13.213 48.627 31.232 63.57 53.912 14.944 22.727 22.44 47.473 22.44 74.14 0 20.999-4.277 39.402-12.782 55.258-8.552 15.809-18.691 29.455-30.415 40.939-11.724 11.532-32.818 30.848-63.186 58.044-8.409 7.64-15.136 14.415-20.181 20.181-5.093 5.766-8.89 11.148-11.34 15.953a78.464 78.464 0 00-5.766 14.415c-1.345 4.853-3.363 13.31-6.102 25.467-4.709 25.658-19.412 38.488-44.11 38.488a45.119 45.119 0 01-32.434-12.59c-8.793-8.408-13.165-20.853-13.165-37.43 0-20.758 3.219-38.729 9.61-53.96a136.942 136.942 0 0125.61-40.026c10.62-11.484 24.986-25.13 43.005-40.939 15.856-13.838 27.244-24.313 34.308-31.328 7.015-7.064 12.973-14.896 17.778-23.545 4.805-8.649 7.208-18.019 7.208-28.157 0-19.797-7.352-36.47-22.055-50.068-14.704-13.599-33.635-20.374-56.891-20.374-27.197 0-47.186 6.872-60.063 20.566-12.83 13.694-23.737 33.923-32.626 60.59-8.409 27.966-24.313 41.9-47.81 41.9a46.993 46.993 0 01-35.028-14.655c-9.514-9.754-14.271-20.325-14.271-31.713zm180.908 406.263c-15.087 0-28.253-4.853-39.497-14.607-11.244-9.802-16.817-23.449-16.817-40.987 0-15.568 5.381-28.686 16.289-39.305 10.859-10.57 24.217-15.904 40.025-15.904 15.568 0 28.638 5.285 39.305 15.904 10.571 10.62 15.905 23.737 15.905 39.305 0 17.298-5.526 30.896-16.674 40.795a56.267 56.267 0 01-38.536 14.799z">
+                                </path>
+                            </svg></span>
+                            <div class="article-label-box">
+                                <div class="article-label-btn">+添加文章标签</div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>添加封面<svg data-v-00bc4474="" width="200" height="200" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon"
+                                style="fill: rgb(153, 154, 170) !important; margin-right: 12px;">
+                                <path data-v-00bc4474=""
+                                    d="M512 992.5C246.62 992.5 31.5 777.38 31.5 512S246.62 31.5 512 31.5 992.5 246.62 992.5 512 777.38 992.5 512 992.5zm0-96.1a384.4 384.4 0 100-768.8 384.4 384.4 0 000 768.8zM324.605 388.271c0-23.496 7.544-47.281 22.584-71.354 15.087-24.121 37.094-44.062 66.02-59.87 28.926-15.857 62.657-23.737 101.194-23.737 35.845 0 67.462 6.63 94.898 19.845 27.389 13.213 48.627 31.232 63.57 53.912 14.944 22.727 22.44 47.473 22.44 74.14 0 20.999-4.277 39.402-12.782 55.258-8.552 15.809-18.691 29.455-30.415 40.939-11.724 11.532-32.818 30.848-63.186 58.044-8.409 7.64-15.136 14.415-20.181 20.181-5.093 5.766-8.89 11.148-11.34 15.953a78.464 78.464 0 00-5.766 14.415c-1.345 4.853-3.363 13.31-6.102 25.467-4.709 25.658-19.412 38.488-44.11 38.488a45.119 45.119 0 01-32.434-12.59c-8.793-8.408-13.165-20.853-13.165-37.43 0-20.758 3.219-38.729 9.61-53.96a136.942 136.942 0 0125.61-40.026c10.62-11.484 24.986-25.13 43.005-40.939 15.856-13.838 27.244-24.313 34.308-31.328 7.015-7.064 12.973-14.896 17.778-23.545 4.805-8.649 7.208-18.019 7.208-28.157 0-19.797-7.352-36.47-22.055-50.068-14.704-13.599-33.635-20.374-56.891-20.374-27.197 0-47.186 6.872-60.063 20.566-12.83 13.694-23.737 33.923-32.626 60.59-8.409 27.966-24.313 41.9-47.81 41.9a46.993 46.993 0 01-35.028-14.655c-9.514-9.754-14.271-20.325-14.271-31.713zm180.908 406.263c-15.087 0-28.253-4.853-39.497-14.607-11.244-9.802-16.817-23.449-16.817-40.987 0-15.568 5.381-28.686 16.289-39.305 10.859-10.57 24.217-15.904 40.025-15.904 15.568 0 28.638 5.285 39.305 15.904 10.571 10.62 15.905 23.737 15.905 39.305 0 17.298-5.526 30.896-16.674 40.795a56.267 56.267 0 01-38.536 14.799z">
+                                </path>
+                            </svg></span>
+                            <div class="upload-cover-box">
+                                <div class="preview-box">
+                                    <img src="" alt="" class="preview">
+                                    <div class="cover-upload-box">
+                                        <div tabindex="0" class="el-upload el-upload--text">
+                                            <button type="button" class="upload-img-box">
+                                                <i class="iconfont">&#xe657;</i>
+                                                <p>添加文章封面</p>
+                                            </button>
+                                            <input type="file" name="file" accept=".png,.jpg,.jpeg,.gif" class="el-upload__input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>文章摘要<svg data-v-00bc4474="" width="200" height="200" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon"
+                                style="fill: rgb(153, 154, 170) !important; margin-right: 12px;">
+                                <path data-v-00bc4474=""
+                                    d="M512 992.5C246.62 992.5 31.5 777.38 31.5 512S246.62 31.5 512 31.5 992.5 246.62 992.5 512 777.38 992.5 512 992.5zm0-96.1a384.4 384.4 0 100-768.8 384.4 384.4 0 000 768.8zM324.605 388.271c0-23.496 7.544-47.281 22.584-71.354 15.087-24.121 37.094-44.062 66.02-59.87 28.926-15.857 62.657-23.737 101.194-23.737 35.845 0 67.462 6.63 94.898 19.845 27.389 13.213 48.627 31.232 63.57 53.912 14.944 22.727 22.44 47.473 22.44 74.14 0 20.999-4.277 39.402-12.782 55.258-8.552 15.809-18.691 29.455-30.415 40.939-11.724 11.532-32.818 30.848-63.186 58.044-8.409 7.64-15.136 14.415-20.181 20.181-5.093 5.766-8.89 11.148-11.34 15.953a78.464 78.464 0 00-5.766 14.415c-1.345 4.853-3.363 13.31-6.102 25.467-4.709 25.658-19.412 38.488-44.11 38.488a45.119 45.119 0 01-32.434-12.59c-8.793-8.408-13.165-20.853-13.165-37.43 0-20.758 3.219-38.729 9.61-53.96a136.942 136.942 0 0125.61-40.026c10.62-11.484 24.986-25.13 43.005-40.939 15.856-13.838 27.244-24.313 34.308-31.328 7.015-7.064 12.973-14.896 17.778-23.545 4.805-8.649 7.208-18.019 7.208-28.157 0-19.797-7.352-36.47-22.055-50.068-14.704-13.599-33.635-20.374-56.891-20.374-27.197 0-47.186 6.872-60.063 20.566-12.83 13.694-23.737 33.923-32.626 60.59-8.409 27.966-24.313 41.9-47.81 41.9a46.993 46.993 0 01-35.028-14.655c-9.514-9.754-14.271-20.325-14.271-31.713zm180.908 406.263c-15.087 0-28.253-4.853-39.497-14.607-11.244-9.802-16.817-23.449-16.817-40.987 0-15.568 5.381-28.686 16.289-39.305 10.859-10.57 24.217-15.904 40.025-15.904 15.568 0 28.638 5.285 39.305 15.904 10.571 10.62 15.905 23.737 15.905 39.305 0 17.298-5.526 30.896-16.674 40.795a56.267 56.267 0 01-38.536 14.799z">
+                                </path>
+                            </svg></span>
+                            <div class="article-summary-box">
+                                <div class="summary-input-box">
+                                    <textarea name="summary" id="artSummary" placeholder="摘要：会在推荐、列表等场景外露，帮助读者快速了解内容，支持一键将正文前 256 字符键入摘要文本框"></textarea>
+                                    <span class="summary-count">0/256</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>文章类型<svg data-v-00bc4474="" width="200" height="200" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon"
+                                style="fill: rgb(153, 154, 170) !important; margin-right: 12px;">
+                                <path data-v-00bc4474=""
+                                    d="M512 992.5C246.62 992.5 31.5 777.38 31.5 512S246.62 31.5 512 31.5 992.5 246.62 992.5 512 777.38 992.5 512 992.5zm0-96.1a384.4 384.4 0 100-768.8 384.4 384.4 0 000 768.8zM324.605 388.271c0-23.496 7.544-47.281 22.584-71.354 15.087-24.121 37.094-44.062 66.02-59.87 28.926-15.857 62.657-23.737 101.194-23.737 35.845 0 67.462 6.63 94.898 19.845 27.389 13.213 48.627 31.232 63.57 53.912 14.944 22.727 22.44 47.473 22.44 74.14 0 20.999-4.277 39.402-12.782 55.258-8.552 15.809-18.691 29.455-30.415 40.939-11.724 11.532-32.818 30.848-63.186 58.044-8.409 7.64-15.136 14.415-20.181 20.181-5.093 5.766-8.89 11.148-11.34 15.953a78.464 78.464 0 00-5.766 14.415c-1.345 4.853-3.363 13.31-6.102 25.467-4.709 25.658-19.412 38.488-44.11 38.488a45.119 45.119 0 01-32.434-12.59c-8.793-8.408-13.165-20.853-13.165-37.43 0-20.758 3.219-38.729 9.61-53.96a136.942 136.942 0 0125.61-40.026c10.62-11.484 24.986-25.13 43.005-40.939 15.856-13.838 27.244-24.313 34.308-31.328 7.015-7.064 12.973-14.896 17.778-23.545 4.805-8.649 7.208-18.019 7.208-28.157 0-19.797-7.352-36.47-22.055-50.068-14.704-13.599-33.635-20.374-56.891-20.374-27.197 0-47.186 6.872-60.063 20.566-12.83 13.694-23.737 33.923-32.626 60.59-8.409 27.966-24.313 41.9-47.81 41.9a46.993 46.993 0 01-35.028-14.655c-9.514-9.754-14.271-20.325-14.271-31.713zm180.908 406.263c-15.087 0-28.253-4.853-39.497-14.607-11.244-9.802-16.817-23.449-16.817-40.987 0-15.568 5.381-28.686 16.289-39.305 10.859-10.57 24.217-15.904 40.025-15.904 15.568 0 28.638 5.285 39.305 15.904 10.571 10.62 15.905 23.737 15.905 39.305 0 17.298-5.526 30.896-16.674 40.795a56.267 56.267 0 01-38.536 14.799z">
+                                </path>
+                            </svg></span>
+                            <div class="article-type-box">
+                                <label>
+                                    <input type="radio" aria-hidden="true"
+                                            tabindex="-1" autocomplete="off" class="el-radio__original" value="original">
+                                        </span><span
+                                        class="el-radio__label"><span 
+                                            tabindex="0">原创
+                                        </label>
+                                    <label>
+                                        <span class="el-radio__inner"></span>
+                                        <input type="radio" aria-hidden="true" tabindex="-1" autocomplete="off" class="el-radio__original" value="original">
+                                        </span><span class="el-radio__label"><span tabindex="0">转载
+                                    </label>
+                                    <label>
+                                        <span class="el-radio__inner"></span>
+                                        <input type="radio" aria-hidden="true" tabindex="-1" autocomplete="off" class="el-radio__original" value="original">
+                                        </span><span class="el-radio__label"><span tabindex="0">翻译
+                                    </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-toolbox">
+
+                </div>
+            </footer>
+        </form>
+        
     </div>
 
     <!-- 登录模态框 -->
@@ -1111,7 +1520,7 @@
 
     <!-- 文章渲染模版 -->
     <script type="text/html" id="J_mainArticleCon">
-        <div class="mainBox">
+        <div class="mainBox J_mainBox" data-articleid="{{ id }}">
             <img src="{{ img }}" alt="">
             <div class="content">
                 <div class="info">
@@ -1139,7 +1548,7 @@
 
     <!-- 登录状态模版 -->
     <script type="text/html" id="J_loginStatusToggle">
-            <a class="userImg-box" id="J_userImgBox" href="#" onclick="stopPropagation(event)"><img class="userImg" src="{{ userImg }}" alt=""></a>
+            <a class="userImg-box" id="J_userImgBox"  href="javascript:;" onclick="stopPropagation(event)"><img class="userImg" src="{{ userImg }}" alt=""></a>
             <div class="userInfo-box J_loginInfo" onclick="stopPropagation(event)">
                 <div class="userMsg-box">
                     <div class="userName">
@@ -1244,6 +1653,133 @@
             </div>
             <div class="doFollow">关注</div>
 
+        </div>
+    </script>
+
+    <!-- 加载组件 -->
+    <script type="text/html" id="J_loadingTpl">
+        <div class="loading-box">
+            <img src="./images/loading.gif" alt="">
+        </div>
+    </script>
+
+    <!-- 错误模版——空列表提示 -->
+    <script type="text/html" id="J_defaultTpl">
+        <div class="default-box">
+            <img src="./images/errorImg.png" alt="">
+            <span>这里空空如也~~~</span>
+        </div>
+    </script>
+    
+    <!-- 文章详情模版 -->
+    <script type="text/html" id="articleTpl">
+        <div class="articleDetail-header-box">
+            <div class="article-header">
+                <div class="article-title-box">
+                    <h1 class="title-article" id="articleContentId">{{ title }}</h1>
+                </div>
+                <div class="article-info-box">
+                    <div class="article-bar-top">
+                        <img class="article-type-img" src="./images/author.png" alt="">
+                        <div class="bar-content">
+                            <a class="follow-nickName " href="https://blog.csdn.net/bzyhyt" target="_blank" rel="noopener"
+                                title="做网站建设制作设计小程序推广">{{ username }}</a>
+                            <img class="article-time-img article-heard-img" src="./images/icon-time.png" alt="">
+                            <span class="time blog-postTime" data-time="2024-05-19 22:59:13">于 {{ createTime }} 发布</span>
+                            <div class="read-count-box">
+                                <img class="article-read-img article-heard-img" src="./images/icon-eye.png" alt="">
+                                <span class="read-count">阅读量{{ viewed }}</span>
+                                <a id="blog_detail_zk_collection" class="un-collection">
+                                    <img class="article-collect-img article-heard-img un-collect-status isdefault"
+                                        style="display:inline-block" src="./images/icon-liked.png" alt="">
+                                    <img class="article-collect-img article-heard-img collect-status isactive" style="display:none"
+                                        src="./images/icon-likeActive.png" alt="">
+                                    <span class="name">收藏</span>
+                                    <span class="get-collection" style="color: rgb(153, 154, 170);">
+                                        {{ collected }}
+                                    </span>
+                                </a>
+                                <div class="read-count-box is-like">
+                                    <img class="article-read-img article-heard-img" style="display:none" id="is-like-imgactive-new"
+                                        src="./images/icon-zanActive.png" alt="">
+                                    <img class="article-read-img article-heard-img" style="display:block" id="is-like-img-new"
+                                        src="./images/icon-zan.png" alt="">
+                                    <span class="read-count" id="blog-digg-num">点赞数
+                                        {{ liked }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-tags-box">
+                        <div class="tags-box artic-tag-box">
+                            <span class="label">文章标签：{{ type }}</span>
+                            <a  class="tag-link" href="javascript:;" target="_blank">经验分享</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-content-box">
+            <div class="article-content">
+                <p class="article">{{ content }}</p>
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="userInfoCardTpl"></script>
+
+    <!-- 评论列表模版 -->
+    <script type="text/html" id="J_commentListTpl">
+        <ul class="comment-list" data-id="{{ id }}">
+            <li class="comment-list-box">
+                <div class="comment-list-item">
+                    <a href="javascript:;" class="comment-list-href">
+                        <img class="J_comment_img" src="{{ avatar }}" alt="">
+                    </a>
+                    <div class="right-box">
+                        <div class="target-name">
+                            <span class="J_comment_name">{{ username }}</span>
+                            <div class="operate-tool-box">
+                                <div class="delete J_delete">删除</div>
+                                <div class="replay J_commentReplayBtn"><i class="iconfont">&#xe63a;</i>回复</div>
+                            </div>
+                        </div>
+                        <div class="comment-con">
+                            {{ content }}
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-edit-box J_secondEditInput">
+                    <form id="J_SecondCommentForm">
+                        <textarea class="comment-content-area J_secondCommentCon" name="comment_content" 
+                            placeholder="想对作者说点什么" maxlength="1000"></textarea>
+                        <div class="comment-operate-box">
+                            <div class="comment-operate-left">
+                                <span>还能输入<em class="inputNumLimit_second">1000</em>个字符</span>
+                            </div>
+                            <div class="comment-operate-right">
+                                <a href="javascript:;" class="submitCmt-btn" id="J_submitSecondCmtBtn">评论</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="replay-box">
+                
+            </li>
+        </ul>
+    </script>
+    <script type="text/html" id="J_secondCommentTpl">
+        <div class="comment-list-item">
+            <a href="javascript:;" class="comment-list-href">
+                <img src="./images/userImg.png" alt="">
+            </a>
+            <div class="right-box">
+                <div class="target-name">这有只小落叶</div>
+                <div class="comment-con">
+                    测试评论
+                </div>
+            </div>
         </div>
     </script>
 </body>
